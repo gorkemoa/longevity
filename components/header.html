@@ -1,291 +1,109 @@
+<!-- Top Bar -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<div class="top-bar">
+    <div class="container">
+        <div class="top-bar-content">
+            <a href="/" class="logo">
+                <img src="https://www.longevity-v1.posttasarim.com/wp-content/uploads/2023/07/logo-3.png" alt="Longevity Klinik Logo">
+            </a>
+            <div class="contact-info">
+                <div class="info-item">
+                    <img src="assets/icons/clock-icon.svg" alt="Çalışma Saatleri">
+                    <div class="info-text">
+                        <span class="label">Çalışma Saatleri</span>
+                        <span class="value">Pazartesi - Cuma 08:00 - 19:00</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <img src="assets/icons/phone-icon.svg" alt="İletişim Telefonu">
+                    <div class="info-text">
+                        <span class="label">İletişim</span>
+                        <span class="value">0850 123 45 67</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <img src="assets/icons/location-icon.svg" alt="Adres">
+                    <div class="info-text">
+                        <span class="label">Adres</span>
+                        <span class="value">Bağdat Caddesi No:123, Kadıköy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Main Header -->
 <header class="header">
     <div class="container">
         <div class="header-container">
-            <a href="/" class="logo">
-                <img src="https://www.longevity-v1.posttasarim.com/wp-content/uploads/2023/07/logo-3.png" alt="Medicare Logo">
-            </a>
             <nav class="nav-menu">
-                <ul>
+                <ul class="menu-slider">
                     <li><a href="/" class="nav-link active">ANASAYFA</a></li>
-                    <li><a href="/about" class="nav-link">KURUMSAL</a></li>
-                    <li><a href="/team" class="nav-link">EKİBİMİZ</a></li>
-                    <li><a href="/services" class="nav-link">HİZMETLERİMİZ</a></li>
+                    <li><a href="/hakkimizda" class="nav-link">HAKKIMIZDA</a></li>
+                    <li><a href="/hizmetlerimiz" class="nav-link">HİZMETLERİMİZ</a></li>
+                    <li><a href="/doktorlarimiz" class="nav-link">DOKTORLARIMIZ</a></li>
                     <li><a href="/blog" class="nav-link">BLOG</a></li>
-                    <li><a href="/contact" class="nav-link">İLETİŞİM</a></li>
+                    <li><a href="/iletisim" class="nav-link">İLETİŞİM</a></li>
                 </ul>
+                <div class="nav-indicator"></div>
             </nav>
             <div class="search-box">
-                <input type="text" placeholder="Arama...">
+                <input type="text" placeholder="Arama yapın...">
                 <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="social-icons">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
 </header>
 
-<style>
-/* Genel stil iyileştirmeleri */
-:root {
-    --primary-color: #2196F3;
-    --secondary-color: #0056b3;
-    --light-gray: #f5f5f5;
-    --dark-gray: #333;
-    --text-color: #444;
-    --border-radius: 4px;
-    --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-body {
-    font-family: 'Poppins', 'Roboto', sans-serif;
-}
-
-/* Üstteki beyazlık sorununu çözmek için ve top-bar'ı güzelleştirme */
-.top-bar {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 8px 0;
-    margin: 0;
-    font-size: 14px;
-}
-
-.top-bar-content {
-    display: flex;
-    justify-content: space-between;
-}
-
-.contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    padding: 5px 0;
-    transition: all 0.3s ease;
-}
-
-.info-item:hover {
-    transform: translateY(-2px);
-}
-
-.info-item i {
-    font-size: 18px;
-    margin-right: 10px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.info-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-text .label {
-    font-size: 12px;
-    font-weight: 500;
-    opacity: 0.9;
-    margin-bottom: 2px;
-}
-
-.info-text .value {
-    font-weight: 600;
-}
-
-/* Header kısmını güzelleştirme */
-.header {
-    background-color: white;
-    box-shadow: var(--box-shadow);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
-}
-
-.logo img {
-    height: 50px;
-    transition: all 0.3s ease;
-}
-
-.logo:hover img {
-    transform: scale(1.05);
-}
-
-/* Menü öğeleri arasındaki boşluğu artırarak sıkışıklığı gidermek için */
-.nav-menu ul {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.nav-menu ul li {
-    margin: 0 12px;
-    position: relative;
-}
-
-.nav-menu ul li a {
-    padding: 10px 5px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--dark-gray);
-    text-decoration: none;
-    white-space: nowrap;
-    letter-spacing: 0.5px;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.nav-menu ul li a:hover {
-    color: var(--primary-color);
-}
-
-.nav-menu ul li a.active {
-    color: var(--primary-color);
-}
-
-.nav-menu ul li a.active:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background-color: var(--primary-color);
-}
-
-.nav-menu ul li a:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    height: 2px;
-    width: 0;
-    background-color: var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-.nav-menu ul li a:hover:after {
-    width: 100%;
-    left: 0;
-}
-
-/* Arama kutusu stilini iyileştirme */
-.search-box {
-    display: flex;
-    position: relative;
-    margin-left: 15px;
-}
-
-.search-box input {
-    border: 1px solid #e1e1e1;
-    border-radius: var(--border-radius);
-    padding: 8px 40px 8px 12px;
-    font-size: 14px;
-    width: 200px;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.search-box input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
-    width: 220px;
-}
-
-.search-box button {
-    background: none;
-    border: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 40px;
-    color: #777;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.search-box button:hover {
-    color: var(--primary-color);
-}
-
-/* Mobil ekranlarda görünüm */
-@media (max-width: 992px) {
-    .top-bar {
-        padding: 5px 0;
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Scroll işlemi için header stil değişimi
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Menü indikatör animasyonu
+    const navLinks = document.querySelectorAll('.nav-link');
+    const indicator = document.querySelector('.nav-indicator');
+    
+    // Aktif öğeyi belirle
+    function setActiveIndicator() {
+        const activeLink = document.querySelector('.nav-link.active');
+        if (activeLink) {
+            const activeItem = activeLink.parentElement;
+            indicator.style.width = `${activeLink.offsetWidth}px`;
+            indicator.style.left = `${activeLink.offsetLeft}px`;
+            indicator.style.opacity = '1';
+        }
     }
     
-    .contact-info {
-        flex-direction: column;
-    }
+    // Sayfa yüklendiğinde çalıştır
+    setActiveIndicator();
     
-    .info-item {
-        margin-bottom: 5px;
-    }
-    
-    .header-container {
-        flex-wrap: wrap;
-    }
-    
-    .nav-menu {
-        order: 3;
-        width: 100%;
-        margin-top: 10px;
-    }
-    
-    .nav-menu ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .nav-menu ul li {
-        margin: 5px 8px;
-    }
-    
-    .search-box {
-        margin: 0 0 0 auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .logo img {
-        height: 40px;
-    }
-    
-    .search-box input {
-        width: 150px;
-    }
-    
-    .search-box input:focus {
-        width: 170px;
-    }
-}
-
-.phone-item {
-    transition: all 0.3s ease;
-}
-.phone-item:hover {
-    transform: scale(1.05);
-}
-.phone-link {
-    color: inherit;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-.phone-link:hover {
-    color: #007bff;
-}
-</style>
+    // Hover efektleri
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            indicator.style.width = `${this.offsetWidth}px`;
+            indicator.style.left = `${this.offsetLeft}px`;
+            indicator.style.opacity = '1';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            setActiveIndicator();
+        });
+    });
+});
+</script>

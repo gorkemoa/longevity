@@ -19,7 +19,7 @@
   <!-- Mobile Optimization -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Tıklama gecikmesini azaltma (mobil dokunma etkileşimlerini hızlandırır)
+      // Mobil cihazlarda daha hızlı tıklama için
       document.body.addEventListener('touchstart', function() {}, {passive: true});
       
       // Form kontrollerinin mobil cihazlarda daha iyi çalışmasını sağlama
@@ -32,6 +32,52 @@
           this.parentElement.classList.remove('focused');
         });
       });
+      
+      // Hero Slider İşlevselliği
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.slider-dot');
+      const prevBtn = document.querySelector('.slider-nav.prev');
+      const nextBtn = document.querySelector('.slider-nav.next');
+      let currentSlide = 0;
+      const slideCount = slides.length;
+      
+      // Otomatik geçiş için zamanlayıcı
+      let slideInterval = setInterval(nextSlide, 5000);
+      
+      // Slider fonksiyonları
+      function goToSlide(index) {
+        // Aktif slide'ı kaldır
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Yeni slide'ı aktif yap
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+        
+        // Zamanlayıcıyı sıfırla
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+      
+      function nextSlide() {
+        let nextIndex = (currentSlide + 1) % slideCount;
+        goToSlide(nextIndex);
+      }
+      
+      function prevSlide() {
+        let prevIndex = (currentSlide - 1 + slideCount) % slideCount;
+        goToSlide(prevIndex);
+      }
+      
+      // Olay dinleyicileri
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+      
+      // Noktalara tıklama
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
     });
   </script>
 </head>
@@ -43,138 +89,63 @@
   <!-- Hero Section -->
   <section class="hero-slider">
     <div class="hero-slides-container">
-      <!-- Slide 1 -->
       <div class="hero-slide active">
         <div class="container">
           <div class="hero-content">
-            <div class="slide-badge">DİJİTAL</div>
-            <h1>We Bring <span class="highlight">Customers.</span></h1>
-            <p>Lorem ipsum dolor sit amet, id tacimates gloriatur voluptatibus cum discere vivendum dissentiæt.</p>
-            <a href="#" class="btn btn-primary">FIND OUT MORE</a>
+            <span class="slide-badge">Sağlıklı Yaşam</span>
+            <h1>Modern Yaklaşımla <span class="highlight">Sağlıklı</span> Yaşamın Anahtarı</h1>
+            <p>Uzman doktor kadromuz ve yenilikçi tedavi yöntemlerimizle sağlığınız için yanınızdayız. Kişiselleştirilmiş sağlık hizmetleri ile hayat kalitenizi artırın.</p>
+            <a href="#appointment" class="btn btn-primary">Randevu Al</a>
           </div>
           <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Professional woman working">
+            <img src="https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg" alt="Modern Klinik">
           </div>
         </div>
       </div>
       
-      <!-- Slide 2 -->
       <div class="hero-slide">
         <div class="container">
           <div class="hero-content">
-            <div class="slide-badge">SAĞLIK</div>
-            <h1>We Build <span class="highlight">Success.</span></h1>
-            <p>Quam explicabo tempor et usu et, lorem mundi eam eu, cum persius adipisci eu.</p>
-            <a href="#" class="btn btn-primary">DISCOVER MORE</a>
+            <span class="slide-badge">Genetik Testler</span>
+            <h1>Geleceğinizi <span class="highlight">Öngörün</span> ve Önlem Alın</h1>
+            <p>İleri teknoloji genetik testlerimizle sağlık riskinizi belirleyin. Erken tanı hayat kurtarır, genetik yatkınlıklarınızı öğrenerek önleyici tedbirler alın.</p>
+            <a href="#genetik-testler" class="btn btn-primary">Bilgi Al</a>
           </div>
           <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Health professional">
+            <img src="https://img.freepik.com/free-photo/doctor-researching-laboratory_23-2149220012.jpg" alt="Genetik Test Laboratuvarı">
           </div>
         </div>
       </div>
       
-      <!-- Slide 3 -->
       <div class="hero-slide">
         <div class="container">
           <div class="hero-content">
-            <div class="slide-badge">YAŞAM</div>
-            <h1>We Create <span class="highlight">Solutions.</span></h1>
-            <p>Qui ad commodo rationibus, est dicam fabulas ad, laboramus reformidans vim ne.</p>
-            <a href="#" class="btn btn-primary">LEARN MORE</a>
+            <span class="slide-badge">Bireysel Danışmanlık</span>
+            <h1>Kişiye Özel <span class="highlight">Sağlık</span> Danışmanlığı</h1>
+            <p>Sağlıklı yaşam için uzmanlarımızla birebir danışmanlık seansları. Size özel beslenme programları ve yaşam tarzı önerileriyle hayat kalitenizi artırın.</p>
+            <a href="#danismanlik" class="btn btn-primary">İletişime Geç</a>
           </div>
           <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Health solutions">
+            <img src="https://img.freepik.com/free-photo/doctor-talking-female-patient_23-2148948613.jpg" alt="Sağlık Danışmanlığı">
           </div>
         </div>
       </div>
     </div>
     
-    <!-- Slider Controls -->
     <div class="slider-controls">
-      <div class="slider-nav prev">
-        <i class="fas fa-arrow-left"></i>
-      </div>
+      <button class="slider-nav prev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
       <div class="slider-dots">
-        <span class="slider-dot active" data-slide="0"></span>
-        <span class="slider-dot" data-slide="1"></span>
-        <span class="slider-dot" data-slide="2"></span>
+        <span class="slider-dot active"></span>
+        <span class="slider-dot"></span>
+        <span class="slider-dot"></span>
       </div>
-      <div class="slider-nav next">
-        <i class="fas fa-arrow-right"></i>
-      </div>
+      <button class="slider-nav next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
   </section>
-
-  <!-- Hero Slider JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Hero Slider İşlevselliği
-      const slides = document.querySelectorAll('.hero-slide');
-      const dots = document.querySelectorAll('.slider-dot');
-      const prevBtn = document.querySelector('.slider-nav.prev');
-      const nextBtn = document.querySelector('.slider-nav.next');
-      let currentSlide = 0;
-      const slideCount = slides.length;
-      
-      // Slider'ı başlat
-      function showSlide(index) {
-        if (index >= slideCount) index = 0;
-        if (index < 0) index = slideCount - 1;
-        
-        // Aktif slaytı güncelle
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
-        
-        // Aktif noktayı güncelle
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
-        
-        currentSlide = index;
-      }
-      
-      // Otomatik slider için zamanlayıcı
-      let slideInterval = setInterval(() => {
-        showSlide(currentSlide + 1);
-      }, 5000); // 5 saniyede bir değiştir
-      
-      // Butonlar için olay dinleyicileri
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
-          showSlide(currentSlide - 1);
-          // Otomatik kaydırmayı yeniden başlat
-          slideInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-          }, 5000);
-        });
-      }
-      
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
-          showSlide(currentSlide + 1);
-          // Otomatik kaydırmayı yeniden başlat
-          slideInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-          }, 5000);
-        });
-      }
-      
-      // Noktalara tıklama
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          clearInterval(slideInterval);
-          showSlide(index);
-          slideInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-          }, 5000);
-        });
-      });
-      
-      // Animasyonları doğru zamanlama için slider'ı başlat
-      showSlide(0);
-    });
-  </script>
 
   <!-- Hizmet Kutuları -->
   <div class="container">
@@ -498,15 +469,12 @@
     </div>
   </section>
 
-
   <!-- Danışanlarımız Ne Diyor? Section -->
   <section class="testimonials">
     <div class="container">
       <h2 class="section-title">DANIŞANLARIMIZ NE DİYOR?</h2>
       
       <div class="testimonials-container">
-        <div class="testimonials-background"></div>
-        
         <div class="testimonial-slider">
           <!-- Testimonial 1 -->
           <div class="testimonial-item active">
@@ -632,9 +600,6 @@
     </div>
  
     <div class="container">
-
-
-
       <div class="cards-grid">
         <div class="search-card search-card-orange">
           <div class="card-content">
@@ -666,8 +631,6 @@
       </div>
     </div>
   </section>
-
-  
 
   <!-- SSS Section -->
   <section class="faq-section">
@@ -1045,107 +1008,6 @@
       // Sayfa yüklendiğinde ve boyutu değiştiğinde kontrol et
       checkResponsive();
       window.addEventListener('resize', checkResponsive);
-    });
-  </script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Hero Slider İşlevselliği
-      const slides = document.querySelectorAll('.hero-slide');
-      const dots = document.querySelectorAll('.slider-dot');
-      const prevBtn = document.querySelector('.slider-nav.prev');
-      const nextBtn = document.querySelector('.slider-nav.next');
-      let currentSlide = 0;
-      const slideCount = slides.length;
-      
-      // Slider'ı başlat
-      function showSlide(index) {
-        if (index >= slideCount) index = 0;
-        if (index < 0) index = slideCount - 1;
-        
-        // Aktif slaytı güncelle
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
-        
-        // Aktif noktayı güncelle
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
-        
-        currentSlide = index;
-      }
-      
-      // Otomatik slider için zamanlayıcı
-      let slideInterval = setInterval(() => {
-        showSlide(currentSlide + 1);
-      }, 5000); // 5 saniyede bir değiştir
-      
-      // Butonlar için olay dinleyicileri
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
-          showSlide(currentSlide - 1);
-          // Otomatik kaydırmayı yeniden başlat
-          slideInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-          }, 5000);
-        });
-      }
-      
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
-          showSlide(currentSlide + 1);
-          // Otomatik kaydırmayı yeniden başlat
-          slideInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-          }, 5000);
-        });
-      }
-      
-      // Noktalara tıklama
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          clearInterval(slideInterval);
-          showSlide(index);
-          slideInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-          }, 5000);
-        });
-      });
-      
-      // Animasyonları doğru zamanlama için slider'ı başlat
-      showSlide(0);
-      
-      // SSS Akordiyon Fonksiyonalitesi
-      const faqItems = document.querySelectorAll('.faq-item');
-      
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', () => {
-          const isActive = item.classList.contains('active');
-          
-          // Diğer tüm açık öğeleri kapat
-          faqItems.forEach(otherItem => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('active');
-            }
-          });
-          
-          // Tıklanan öğenin durumunu değiştir
-          item.classList.toggle('active');
-        });
-      });
-      
-      // Video Oynatma Butonu İşlevselliği
-      const playButton = document.querySelector('.play-button');
-      
-      if (playButton) {
-        playButton.addEventListener('click', function() {
-          // Burada video oynatma fonksiyonunu ekleyebilirsiniz
-          alert('Video oynatılıyor...');
-        });
-      }
     });
   </script>
 
@@ -1686,6 +1548,86 @@
     }
   </style>
 
+  <script>
+    // Danışanlarımız Ne Diyor? bölümü için JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      const testimonialCards = document.querySelectorAll('.testimonial-card');
+      const indicators = document.querySelectorAll('.indicator');
+      const prevBtn = document.querySelector('.testimonial-nav-btn.prev');
+      const nextBtn = document.querySelector('.testimonial-nav-btn.next');
+      let currentTestimonial = 0;
+      
+      // İndikatörlere tıklama olayı
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          showTestimonial(index);
+        });
+      });
+      
+      // Önceki ve sonraki butonları
+      prevBtn.addEventListener('click', prevTestimonial);
+      nextBtn.addEventListener('click', nextTestimonial);
+      
+      function showTestimonial(index) {
+        testimonialCards.forEach(card => {
+          card.classList.remove('active');
+        });
+        
+        indicators.forEach(dot => {
+          dot.classList.remove('active');
+        });
+        
+        testimonialCards[index].classList.add('active');
+        indicators[index].classList.add('active');
+        currentTestimonial = index;
+      }
+      
+      function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+      }
+      
+      function prevTestimonial() {
+        currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+      }
+      
+      // Otomatik geçiş
+      let testimonialInterval = setInterval(nextTestimonial, 6000);
+      
+      // Kullanıcı etkileşiminde otomatik geçişi durdur ve yeniden başlat
+      const testimonialContainer = document.querySelector('.testimonials-container');
+      
+      testimonialContainer.addEventListener('mouseenter', () => {
+        clearInterval(testimonialInterval);
+      });
+      
+      testimonialContainer.addEventListener('mouseleave', () => {
+        testimonialInterval = setInterval(nextTestimonial, 6000);
+      });
+      
+      // Dokunmatik cihazlar için kaydırma desteği
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      testimonialContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      testimonialContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+      
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextTestimonial();
+        } else if (touchEndX > touchStartX + 50) {
+          prevTestimonial();
+        }
+      }
+    });
+  </script>
 
 </body>
 </html> 

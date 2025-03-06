@@ -34,6 +34,37 @@
       });
     });
   </script>
+  <style>
+    .detail-link {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+
+    .detail-link i {
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .detail-link:hover {
+      color: #3498db;
+    }
+
+    .detail-link:hover i {
+      transform: translateX(5px);
+    }
+
+    .service-content {
+      position: relative;
+      padding-bottom: 45px;
+    }
+  </style>
 </head>
 <div id="header-container"></div>
 
@@ -66,53 +97,90 @@
     <button class="slider-nav next"><i class="fas fa-chevron-right"></i></button>
   </section>
 
-  <!-- Hizmet Kutuları -->
-  <div class="container">
-    <div class="service-boxes">
-      <!-- Genetik Checkup -->
-      <div class="service-box">
-        <div class="service-box-icon">
-          <i class="fas fa-dna"></i>
+  <section class="after-hours">
+    <div class="container">
+      <div class="after-hours-content">
+        <div class="after-hours-left">
+          <h2>KAMPANYALAR</h2>
+          <div class="highlight-text" style="white-space: nowrap; font-size: 20px;">Longevity Klinik</div>
         </div>
-        <h3>Genetik Checkup</h3>
-        <p>En sık görülen (kalp, şeker, kanser, nörolojik vb.) hastalıklarla ilgili risklerinizin önceden saptanıp, buna yönelik önleyici tedbirlerin belirlenmesi</p>
-      </div>
-      
-      <!-- Ailevi Kanser -->
-      <div class="service-box">
-        <div class="service-box-icon">
-          <i class="fas fa-notes-medical"></i>
+        <div class="after-hours-center">
+          <div class="campaign-slider">
+            <p class="campaign-slide fade">İlk muayenede %20 indirim fırsatı!</p>
+            <p class="campaign-slide fade">Check-up paketlerinde özel yaz indirimi.</p>
+            <p class="campaign-slide fade">Aile üyeleriniz için grup indirimi avantajları.</p>
+            <p class="campaign-slide fade">Online konsültasyonlarda %15 indirim.</p>
         </div>
-        <h3>Ailevi Kanser</h3>
-        <p>Ailenizde görülen kanserlerin genetik bir mutasyon nedeni ile mi oluştuğunun tespitiyle sizin ve çocuklarınızın kanser riskini altında mı olduğunu değerlendirme</p>
-      </div>
-      
-      <!-- Nutrigenetic Testler -->
-      <div class="service-box">
-        <div class="service-box-icon">
-          <i class="fas fa-apple-alt"></i>
+          <style>
+            .campaign-slider {
+              position: relative;
+              width: 100%;
+              overflow: hidden;
+              margin: 0;
+              padding: 0;
+            }
+            .campaign-slide {
+              display: none;
+              animation: fade 2s ease-in-out infinite;
+              width: 100%;
+              text-align: center;
+              margin: 0;
+              padding: 15px;
+              color: #2c3e50;
+              font-weight: 500;
+            }
+            .fade {
+              animation: fade 2s ease-in-out infinite;
+            }
+            @keyframes fade {
+              0%, 100% { opacity: 0; }
+              50% { opacity: 1; }
+            }
+            .campaign-slide:first-child {
+              display: block;
+            }
+            
+            @media (max-width: 768px) {
+              .campaign-slide {
+                font-size: 14px;
+                padding: 10px;
+              }
+            }
+            
+            @media (max-width: 576px) {
+              .campaign-slide {
+                font-size: 12px;
+                padding: 8px;
+              }
+            }
+          </style>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const slides = document.querySelectorAll('.campaign-slide');
+              let currentSlide = 0;
+              
+              setInterval(() => {
+                slides[currentSlide].style.display = 'none';
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].style.display = 'block';
+              }, 4000);
+            });
+          </script>
         </div>
-        <h3>Nutrigenetic Testler</h3>
-        <p>Metabolizma genlerinize bakılarak beslenişinizin ve uygulayacağınız diyet programınızın kendi genetik özelliklerinize göre düzenlenmesi ve takibi</p>
-      </div>
-      
-      <!-- Mikrobiom Testi -->
-      <div class="service-box">
-        <div class="service-box-icon">
-          <i class="fas fa-bacteria"></i>
+        <div class="key-image-container">
         </div>
-        <h3>Mikrobiom Testi</h3>
-        <p>Barsak floranızın belirtilerek gastrointestinal şikayetlerinizin giderilişi için size özgü olarak neler yemeniz gerektiğinin tespit edilmesi</p>
+        <div class="after-hours-right">
+          <a href="/randevu" class="btn btn-outline">Randevu Al</a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- About Section -->
   <section class="about-section">
     <div class="container">
       <div class="about-content">
         <div class="about-left">
-          <h2 class="about-title">HAKKIMIZDA</h2>
+          <h2 class="section-title">HAKKIMIZDA</h2>
           <div class="about-number">15</div>
           <div class="about-subtitle">Yılı aşkın süredir sağlık sektöründe hizmet veriyoruz.</div>
           <p class="about-description">
@@ -154,67 +222,80 @@
   <!-- Hizmetler Section -->
   <section class="our-work">
     <div class="container">
-      <h2 class="section-title">HİZMETLERİMİZ</h2>
+      <h2 class="section-title">FONKSİYONEL TIP</h2>
       
       <!-- Fonksiyonel Tıp - Yatay Kaydırmalı -->
       <div class="service-category">
-        <div class="service-category-header">
-          <h4 class="category-subtitle">FONKSİYONEL TIP</h4>
-        </div>
+ 
         <div class="services-slider">
           <div class="horizontal-scroll">
             <div class="service-card">
-              <div class="service-number">01</div>
               <div class="service-image">
                 <img src="https://img.freepik.com/free-photo/doctor-with-white-coat-stethoscope-isolated-white_232070-1311.jpg" alt="Fonksiyonel Tıp Konsültasyonu">
               </div>
               <div class="service-content">
                 <h4>FONKSİYONEL TIP KONSÜLTASYONU</h4>
                 <p>Kişiselleştirilmiş sağlık değerlendirmesi ve tedavi planlarıyla kronik hastalıkların kök nedenlerini tespit ediyoruz.</p>
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
             
             <div class="service-card">
-              <div class="service-number">02</div>
               <div class="service-image">
                 <img src="https://img.freepik.com/free-photo/nutritionist-with-healthy-fruits-working-her-office_23-2148740930.jpg" alt="Beslenme ve Detoks">
               </div>
               <div class="service-content">
                 <h4>BESLENME VE DETOKS</h4>
                 <p>Vücudunuzun ihtiyaçlarına özel beslenme programları ve detoks protokolleri ile sağlıklı yaşamı destekliyoruz.</p>
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
             
             <div class="service-card">
-              <div class="service-number">03</div>
               <div class="service-image">
                 <img src="https://trthaberstatic.cdn.wp.trt.com.tr/resimler/1648000/genetik-1649399.jpg" alt="Genetik Test ve Analiz">
               </div>
               <div class="service-content">
                 <h4>GENETİK TEST VE ANALİZ</h4>
                 <p>DNA analizleri ile sağlık risklerinizi belirliyor, size özel önleyici tedavi yaklaşımları sunuyoruz.</p>
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
             
             <div class="service-card">
-              <div class="service-number">04</div>
               <div class="service-image">
                 <img src="https://img.freepik.com/free-photo/doctor-examining-patient-clinic_23-2148875755.jpg" alt="Hormonal Denge">
               </div>
               <div class="service-content">
                 <h4>HORMONAL DENGE</h4>
                 <p>Hormon dengesizliklerini kapsamlı testlerle tespit ediyor, doğal ve bütüncül çözümlerle dengeyi yeniden sağlıyoruz.</p>
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
             
             <div class="service-card">
-              <div class="service-number">05</div>
               <div class="service-image">
                 <img src="https://img.freepik.com/free-photo/intestines-human-body-anatomy-concept_23-2150172687.jpg" alt="Bağırsak Sağlığı">
               </div>
               <div class="service-content">
                 <h4>BAĞIRSAK SAĞLIĞI</h4>
                 <p>Mikrobiom analizleri ve kişiselleştirilmiş protokollerle sindirim sistemi sağlığınızı iyileştiriyor, bağışıklığınızı güçlendiriyoruz.</p>
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -235,72 +316,90 @@
       <!-- Mezoterapi - 3'erli Grid Yapı -->
       <div class="service-category">
         <div class="service-category-header">
-          <h4 class="category-subtitle">MEZOTERAPİ</h4>
+          <h4 class="section-title">MEZOTERAPİ</h4>
         </div>
         <div class="vertical-grid">
           <div class="service-card">
-            <div class="service-number">01</div>
             <div class="service-image">
               <img src="https://naturelbotoks.com/wp-content/uploads/2022/03/drersinaydin-naturel-botox-1.jpg" alt="Botoks">
             </div>
             <div class="service-content">
               <h4>BOTOKS</h4>
               <p>Kırışıklıkların giderilmesi ve yüz ifadesinin yenilenmesi için uzman ekibimizle kişiselleştirilmiş botoks uygulamaları.</p>
+              <a href="#" class="detail-link">
+                Detaylı Bilgi
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
           
           <div class="service-card">
-            <div class="service-number">02</div>
             <div class="service-image">
               <img src="https://img.freepik.com/free-photo/beautiful-young-woman-receiving-facial-massage_186202-6552.jpg" alt="Glutatyon">
             </div>
             <div class="service-content">
               <h4>GLUTATYON</h4>
               <p>Güçlü antioksidan etkisiyle cilt tonunu eşitleyen, parlaklık kazandıran ve toksinleri uzaklaştıran glutatyon uygulamaları.</p>
+              <a href="#" class="detail-link">
+                Detaylı Bilgi
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
           
           <div class="service-card">
-            <div class="service-number">03</div>
             <div class="service-image">
               <img src="https://d25tea7qfcsjlw.cloudfront.net/17744/link/389749/266356.jpg" alt="Cilt Yenileme">
             </div>
             <div class="service-content">
               <h4>CİLT YENİLEME</h4>
               <p>Cildinizin doğal yenilenme sürecini hızlandıran, ince çizgileri ve leke sorunlarını hedefleyen mezoterapi uygulamaları.</p>
+              <a href="#" class="detail-link">
+                Detaylı Bilgi
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
           
           <div class="service-card">
-            <div class="service-number">04</div>
             <div class="service-image">
               <img src="https://www.lifeplus.com.tr/wp-content/uploads/2023/04/sac-mezoterapisi-2.jpg" alt="Saç Mezoterapisi">
             </div>
             <div class="service-content">
               <h4>SAÇ MEZOTERAPİSİ</h4>
               <p>Saç dökülmesi sorunlarına karşı etkili, saç köklerini besleyen ve güçlendiren özel mezoterapi formülleri ile saç sağlığınızı yeniden kazanın.</p>
+              <a href="#" class="detail-link">
+                Detaylı Bilgi
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
           
           <div class="service-card">
-            <div class="service-number">05</div>
             <div class="service-image">
               <img src="https://www.drsecildemirci.com/wp-content/uploads/2023/11/selulit-tedavisi.jpg" alt="Selülit Tedavisi">
             </div>
             <div class="service-content">
               <h4>SELÜLİT TEDAVİSİ</h4>
               <p>Selülit görünümünü azaltan, cilt dokusunu iyileştiren ve sıkılaştıran özel formüller ile vücut konturlarınızı yeniden şekillendirin.</p>
+              <a href="#" class="detail-link">
+                Detaylı Bilgi
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
           
           <div class="service-card">
-            <div class="service-number">06</div>
             <div class="service-image">
               <img src="https://img.freepik.com/free-photo/close-up-doctor-patient-process-injection-lips_1157-28767.jpg" alt="Güzellik Enjeksiyonları">
             </div>
             <div class="service-content">
               <h4>GÜZELLİK ENJEKSİYONLARI</h4>
               <p>Dolgu uygulamaları, PRP ve hyalüronik asit ile yüz konturlarını iyileştiren, yaşlanma belirtilerini geciktiren enjeksiyon tedavileri.</p>
+              <a href="#" class="detail-link">
+                Detaylı Bilgi
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -539,12 +638,11 @@
             <img src="https://png.pngtree.com/png-clipart/20240131/original/pngtree-thinking-woman-doctor-phoning-with-photo-png-image_14198554.png" alt="Mercedes" class="car-image">
           </div>
         </div>
-
         <div class="search-card search-card-dark">
           <div class="card-content">
             <h2>Sıkça Sorulan Sorular</h2>
             <p>Aklınıza takılan her soruyu size en iyi şekilde cevaplayabiliriz.Detaylı bilgi almak için tıklayınız.</p>
-            <a href="#" class="search-button">
+            <a href="#" class="search-button" style="background-color:var(--primary-color);">
               Araçları Bul
               <i class="fas fa-search"></i>
             </a>
@@ -1156,19 +1254,7 @@
     position: relative;
   }
 
-  .service-number {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-    font-size: 24px;
-    font-weight: 700;
-    padding: 10px 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-  }
+
 
   .service-card:hover {
     transform: translateY(-10px);
@@ -1225,10 +1311,7 @@
       padding: 0 15px;
     }
 
-    .service-number {
-      font-size: 20px;
-      padding: 8px 12px;
-    }
+ 
   }
 
   @media (max-width: 768px) {
@@ -1244,12 +1327,7 @@
       font-size: 14px;
     }
 
-    .service-number {
-      font-size: 18px;
-      padding: 6px 10px;
-      top: 15px;
-      right: 15px;
-    }
+  
   }
   </style>
 

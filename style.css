@@ -121,7 +121,7 @@
     height: 100vh;
     overflow: hidden;
     margin-bottom: 0;
-    background-color: #ffffff;
+    background-color: var(--light-gray);
   }
   
   .hero-slides-container {
@@ -584,7 +584,7 @@
   
   .about-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
@@ -596,20 +596,11 @@
   }
   
   .about-title {
-    color: var(--secondary-color);
-    font-size: 32px;
+    color: var(--primary-color);
+    font-size: 24px;
     margin-bottom: var(--spacing-md);
     position: relative;
-  }
-  
-  .about-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background-color: var(--primary-color);
+    font-weight: 700;
   }
   
   .about-number {
@@ -625,27 +616,25 @@
     color: var(--text-color);
     margin-bottom: var(--spacing-md);
     font-weight: 500;
+    line-height: 1.4;
   }
   
   .about-description {
     color: var(--text-color);
     opacity: 0.8;
     margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
   }
   
   .about-right {
     flex: 1;
   }
   
-  .cars-image {
-    width: 100%;
-    position: relative;
-  }
-  
-  .premium-cars {
+  .about-right img {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
   
   .features-grid {
@@ -660,13 +649,13 @@
     padding: var(--spacing-md);
     background-color: var(--white);
     border-radius: var(--border-radius-md);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: var(--transition-normal);
   }
   
   .feature-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
   
   .feature-icon {
@@ -676,9 +665,10 @@
   }
   
   .feature-item h3 {
-    font-size: 18px;
-    color: var(--secondary-color);
+    font-size: 16px;
+    color: var(--text-color);
     margin-bottom: var(--spacing-xs);
+    font-weight: 600;
   }
   
   .feature-item p {
@@ -688,15 +678,14 @@
   }
   
   /* Responsive Styles for About Section */
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .about-content {
       flex-direction: column;
-      text-align: center;
     }
   
-    .about-title::after {
-      left: 50%;
-      transform: translateX(-50%);
+    .about-left,
+    .about-right {
+      width: 100%;
     }
   
     .features-grid {
@@ -705,17 +694,35 @@
     }
   }
   
-  @media (max-width: 480px) {
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-  
+  @media (max-width: 768px) {
     .about-number {
       font-size: 48px;
     }
   
     .about-subtitle {
       font-size: 18px;
+    }
+  
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .about-title {
+      font-size: 20px;
+    }
+  
+    .about-number {
+      font-size: 40px;
+    }
+  
+    .about-subtitle {
+      font-size: 16px;
     }
   }
   
