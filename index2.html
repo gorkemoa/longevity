@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Apak's Longevity ve Getat</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  
+  <!-- Header JS - Tüm sayfalarda hamburger menü için gerekli -->
+  <script src="assets/js/header.js"></script>
+  
+  <!-- Mobile Optimization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tıklama gecikmesini azaltma (mobil dokunma etkileşimlerini hızlandırır)
+      document.body.addEventListener('touchstart', function() {}, {passive: true});
+      
+      // Form kontrollerinin mobil cihazlarda daha iyi çalışmasını sağlama
+      const formControls = document.querySelectorAll('.form-control');
+      formControls.forEach(control => {
+        control.addEventListener('focus', function() {
+          this.parentElement.classList.add('focused');
+        });
+        control.addEventListener('blur', function() {
+          this.parentElement.classList.remove('focused');
+        });
+      });
+    });
+  </script>
+</head>
+<div id="header-container"></div>
+
+<body>
+  <!-- Header -->
+
+  <!-- Hero Section -->
+  <section class="hero-slider">
+    <div class="hero-slides-container">
+      <!-- Slide 1 -->
+      <div class="hero-slide active">
+        <div class="container">
+          <div class="hero-content">
+            <div class="slide-badge">DİJİTAL</div>
+            <h1>We Bring <span class="highlight">Customers.</span></h1>
+            <p>Lorem ipsum dolor sit amet, id tacimates gloriatur voluptatibus cum discere vivendum dissentiæt.</p>
+            <a href="#" class="btn btn-primary">FIND OUT MORE</a>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Professional woman working">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 2 -->
+      <div class="hero-slide">
+        <div class="container">
+          <div class="hero-content">
+            <div class="slide-badge">SAĞLIK</div>
+            <h1>We Build <span class="highlight">Success.</span></h1>
+            <p>Quam explicabo tempor et usu et, lorem mundi eam eu, cum persius adipisci eu.</p>
+            <a href="#" class="btn btn-primary">DISCOVER MORE</a>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Health professional">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 3 -->
+      <div class="hero-slide">
+        <div class="container">
+          <div class="hero-content">
+            <div class="slide-badge">YAŞAM</div>
+            <h1>We Create <span class="highlight">Solutions.</span></h1>
+            <p>Qui ad commodo rationibus, est dicam fabulas ad, laboramus reformidans vim ne.</p>
+            <a href="#" class="btn btn-primary">LEARN MORE</a>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Health solutions">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slider Controls -->
+    <div class="slider-controls">
+      <div class="slider-nav prev">
+        <i class="fas fa-arrow-left"></i>
+      </div>
+      <div class="slider-dots">
+        <span class="slider-dot active" data-slide="0"></span>
+        <span class="slider-dot" data-slide="1"></span>
+        <span class="slider-dot" data-slide="2"></span>
+      </div>
+      <div class="slider-nav next">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Slider JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hero Slider İşlevselliği
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.slider-dot');
+      const prevBtn = document.querySelector('.slider-nav.prev');
+      const nextBtn = document.querySelector('.slider-nav.next');
+      let currentSlide = 0;
+      const slideCount = slides.length;
+      
+      // Slider'ı başlat
+      function showSlide(index) {
+        if (index >= slideCount) index = 0;
+        if (index < 0) index = slideCount - 1;
+        
+        // Aktif slaytı güncelle
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+        
+        // Aktif noktayı güncelle
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+        
+        currentSlide = index;
+      }
+      
+      // Otomatik slider için zamanlayıcı
+      let slideInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000); // 5 saniyede bir değiştir
+      
+      // Butonlar için olay dinleyicileri
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
+          showSlide(currentSlide - 1);
+          // Otomatik kaydırmayı yeniden başlat
+          slideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
+          showSlide(currentSlide + 1);
+          // Otomatik kaydırmayı yeniden başlat
+          slideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        });
+      }
+      
+      // Noktalara tıklama
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          clearInterval(slideInterval);
+          showSlide(index);
+          slideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        });
+      });
+      
+      // Animasyonları doğru zamanlama için slider'ı başlat
+      showSlide(0);
+    });
+  </script>
+
+  <!-- Hizmet Kutuları -->
+  <div class="container">
+    <div class="service-boxes">
+      <!-- Genetik Checkup -->
+      <div class="service-box">
+        <div class="service-box-icon">
+          <i class="fas fa-dna"></i>
+        </div>
+        <h3>Genetik Checkup</h3>
+        <p>En sık görülen (kalp, şeker, kanser, nörolojik vb.) hastalıklarla ilgili risklerinizin önceden saptanıp, buna yönelik önleyici tedbirlerin belirlenmesi</p>
+      </div>
+      
+      <!-- Ailevi Kanser -->
+      <div class="service-box">
+        <div class="service-box-icon">
+          <i class="fas fa-notes-medical"></i>
+        </div>
+        <h3>Ailevi Kanser</h3>
+        <p>Ailenizde görülen kanserlerin genetik bir mutasyon nedeni ile mi oluştuğunun tespitiyle sizin ve çocuklarınızın kanser riskini altında mı olduğunu değerlendirme</p>
+      </div>
+      
+      <!-- Nutrigenetic Testler -->
+      <div class="service-box">
+        <div class="service-box-icon">
+          <i class="fas fa-apple-alt"></i>
+        </div>
+        <h3>Nutrigenetic Testler</h3>
+        <p>Metabolizma genlerinize bakılarak beslenişinizin ve uygulayacağınız diyet programınızın kendi genetik özelliklerinize göre düzenlenmesi ve takibi</p>
+      </div>
+      
+      <!-- Mikrobiom Testi -->
+      <div class="service-box">
+        <div class="service-box-icon">
+          <i class="fas fa-bacteria"></i>
+        </div>
+        <h3>Mikrobiom Testi</h3>
+        <p>Barsak floranızın belirtilerek gastrointestinal şikayetlerinizin giderilişi için size özgü olarak neler yemeniz gerektiğinin tespit edilmesi</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-left">
+          <h2 class="about-title">HAKKIMIZDA</h2>
+          <div class="about-number">15</div>
+          <div class="about-subtitle">Yılı aşkın süredir sağlık sektöründe hizmet veriyoruz.</div>
+          <p class="about-description">
+            Longevity Klinik olarak İstanbul'un önde gelen sağlık kuruluşlarından biriyiz. Uzman kadromuz ve modern tıbbi ekipmanlarımızla hastalarımıza en kaliteli sağlık hizmetini sunuyoruz.
+          </p>
+        </div>
+        <div class="about-right">
+          <div class="cars-image">
+            <img src="https://www.arkitera.com/wp-content/uploads/2020/09/slasharchitects-Clinic-29-07-1024x683.jpg" alt="Modern Klinik" class="clinic-image">
+          </div>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <i class="fas fa-user-md feature-icon"></i>
+          <h3>UZMAN KADRO</h3>
+          <p>Deneyimli uzman hekimler</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-headset feature-icon"></i>
+          <h3>7/24 HİZMET</h3>
+          <p>Kesintisiz sağlık hizmeti</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-hospital-alt feature-icon"></i>
+          <h3>MODERN TESİS</h3>
+          <p>Son teknoloji ekipmanlar</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-heart feature-icon"></i>
+          <h3>KALİTELİ HİZMET</h3>
+          <p>Hasta memnuniyeti odaklı</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hizmetler Section -->
+  <section class="our-work">
+    <div class="container">
+      <h2 class="section-title">HİZMETLERİMİZ</h2>
+      
+      <!-- Fonksiyonel Tıp - Yatay Kaydırmalı -->
+      <div class="service-category">
+        <div class="service-category-header">
+          <h4 class="category-subtitle">FONKSİYONEL TIP</h4>
+        </div>
+        <div class="services-slider">
+          <div class="horizontal-scroll">
+            <div class="service-card">
+              <div class="service-number">01</div>
+              <div class="service-image">
+                <img src="https://img.freepik.com/free-photo/doctor-with-white-coat-stethoscope-isolated-white_232070-1311.jpg" alt="Fonksiyonel Tıp Konsültasyonu">
+              </div>
+              <div class="service-content">
+                <h4>FONKSİYONEL TIP KONSÜLTASYONU</h4>
+                <p>Kişiselleştirilmiş sağlık değerlendirmesi ve tedavi planlarıyla kronik hastalıkların kök nedenlerini tespit ediyoruz.</p>
+              </div>
+            </div>
+            
+            <div class="service-card">
+              <div class="service-number">02</div>
+              <div class="service-image">
+                <img src="https://img.freepik.com/free-photo/nutritionist-with-healthy-fruits-working-her-office_23-2148740930.jpg" alt="Beslenme ve Detoks">
+              </div>
+              <div class="service-content">
+                <h4>BESLENME VE DETOKS</h4>
+                <p>Vücudunuzun ihtiyaçlarına özel beslenme programları ve detoks protokolleri ile sağlıklı yaşamı destekliyoruz.</p>
+              </div>
+            </div>
+            
+            <div class="service-card">
+              <div class="service-number">03</div>
+              <div class="service-image">
+                <img src="https://trthaberstatic.cdn.wp.trt.com.tr/resimler/1648000/genetik-1649399.jpg" alt="Genetik Test ve Analiz">
+              </div>
+              <div class="service-content">
+                <h4>GENETİK TEST VE ANALİZ</h4>
+                <p>DNA analizleri ile sağlık risklerinizi belirliyor, size özel önleyici tedavi yaklaşımları sunuyoruz.</p>
+              </div>
+            </div>
+            
+            <div class="service-card">
+              <div class="service-number">04</div>
+              <div class="service-image">
+                <img src="https://img.freepik.com/free-photo/doctor-examining-patient-clinic_23-2148875755.jpg" alt="Hormonal Denge">
+              </div>
+              <div class="service-content">
+                <h4>HORMONAL DENGE</h4>
+                <p>Hormon dengesizliklerini kapsamlı testlerle tespit ediyor, doğal ve bütüncül çözümlerle dengeyi yeniden sağlıyoruz.</p>
+              </div>
+            </div>
+            
+            <div class="service-card">
+              <div class="service-number">05</div>
+              <div class="service-image">
+                <img src="https://img.freepik.com/free-photo/intestines-human-body-anatomy-concept_23-2150172687.jpg" alt="Bağırsak Sağlığı">
+              </div>
+              <div class="service-content">
+                <h4>BAĞIRSAK SAĞLIĞI</h4>
+                <p>Mikrobiom analizleri ve kişiselleştirilmiş protokollerle sindirim sistemi sağlığınızı iyileştiriyor, bağışıklığınızı güçlendiriyoruz.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ayırıcı Bölüm -->
+      <div class="service-divider">
+        <div class="divider-image">
+          <img src="https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-coat_23-2149611228.jpg" alt="Sağlık Hizmetleri">
+        </div>
+        <div class="divider-content">
+          <h3>SAĞLIĞINIZ BİZİM ÖNCELİĞİMİZ</h3>
+          <p>Bütüncül yaklaşım ve ileri teknolojilerle sağlığınızı korumak, yaşam kalitenizi artırmak için yanınızdayız.</p>
+        </div>
+      </div>
+
+      <!-- Mezoterapi - 3'erli Grid Yapı -->
+      <div class="service-category">
+        <div class="service-category-header">
+          <h4 class="category-subtitle">MEZOTERAPİ</h4>
+        </div>
+        <div class="vertical-grid">
+          <div class="service-card">
+            <div class="service-number">01</div>
+            <div class="service-image">
+              <img src="https://naturelbotoks.com/wp-content/uploads/2022/03/drersinaydin-naturel-botox-1.jpg" alt="Botoks">
+            </div>
+            <div class="service-content">
+              <h4>BOTOKS</h4>
+              <p>Kırışıklıkların giderilmesi ve yüz ifadesinin yenilenmesi için uzman ekibimizle kişiselleştirilmiş botoks uygulamaları.</p>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-number">02</div>
+            <div class="service-image">
+              <img src="https://img.freepik.com/free-photo/beautiful-young-woman-receiving-facial-massage_186202-6552.jpg" alt="Glutatyon">
+            </div>
+            <div class="service-content">
+              <h4>GLUTATYON</h4>
+              <p>Güçlü antioksidan etkisiyle cilt tonunu eşitleyen, parlaklık kazandıran ve toksinleri uzaklaştıran glutatyon uygulamaları.</p>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-number">03</div>
+            <div class="service-image">
+              <img src="https://d25tea7qfcsjlw.cloudfront.net/17744/link/389749/266356.jpg" alt="Cilt Yenileme">
+            </div>
+            <div class="service-content">
+              <h4>CİLT YENİLEME</h4>
+              <p>Cildinizin doğal yenilenme sürecini hızlandıran, ince çizgileri ve leke sorunlarını hedefleyen mezoterapi uygulamaları.</p>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-number">04</div>
+            <div class="service-image">
+              <img src="https://www.lifeplus.com.tr/wp-content/uploads/2023/04/sac-mezoterapisi-2.jpg" alt="Saç Mezoterapisi">
+            </div>
+            <div class="service-content">
+              <h4>SAÇ MEZOTERAPİSİ</h4>
+              <p>Saç dökülmesi sorunlarına karşı etkili, saç köklerini besleyen ve güçlendiren özel mezoterapi formülleri ile saç sağlığınızı yeniden kazanın.</p>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-number">05</div>
+            <div class="service-image">
+              <img src="https://www.drsecildemirci.com/wp-content/uploads/2023/11/selulit-tedavisi.jpg" alt="Selülit Tedavisi">
+            </div>
+            <div class="service-content">
+              <h4>SELÜLİT TEDAVİSİ</h4>
+              <p>Selülit görünümünü azaltan, cilt dokusunu iyileştiren ve sıkılaştıran özel formüller ile vücut konturlarınızı yeniden şekillendirin.</p>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-number">06</div>
+            <div class="service-image">
+              <img src="https://img.freepik.com/free-photo/close-up-doctor-patient-process-injection-lips_1157-28767.jpg" alt="Güzellik Enjeksiyonları">
+            </div>
+            <div class="service-content">
+              <h4>GÜZELLİK ENJEKSİYONLARI</h4>
+              <p>Dolgu uygulamaları, PRP ve hyalüronik asit ile yüz konturlarını iyileştiren, yaşlanma belirtilerini geciktiren enjeksiyon tedavileri.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ekibimiz Section -->
+  <section class="team-section">
+    <div class="container">
+      <h2 class="section-title">EKİBİMİZ</h2>
+      <div class="team-grid">
+        <!-- Doktor 1 -->
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg" alt="Dr. Ahmet Yılmaz">
+            <div class="social-links">
+              <a href="https://instagram.com/drahmetyilmaz" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com/drahmetyilmaz" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="tel:+905551234567"><i class="fas fa-phone"></i></a>
+              <a href="mailto:dr.ahmet@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h3>Dr. Ahmet Yılmaz</h3>
+            <span class="specialty">Fonksiyonel Tıp Uzmanı</span>
+            <p>Genetik hastalıklar ve fonksiyonel tıp alanında 15 yıllık deneyim</p>
+          </div>
+        </div>
+
+        <!-- Doktor 2 -->
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg" alt="Dr. Ayşe Kaya">
+            <div class="social-links">
+              <a href="https://instagram.com/draysekaya" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com/draysekaya" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="tel:+905551234568"><i class="fas fa-phone"></i></a>
+              <a href="mailto:dr.ayse@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h3>Dr. Ayşe Kaya</h3>
+            <span class="specialty">Estetik Hekim</span>
+            <p>Mezoterapi ve anti-aging tedavilerde uzmanlaşmış deneyimli hekim</p>
+          </div>
+        </div>
+
+        <!-- Doktor 3 -->
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://img.freepik.com/free-photo/doctor-with-white-coat-stethoscope-isolated-white_232070-1311.jpg" alt="Dr. Mehmet Demir">
+            <div class="social-links">
+              <a href="https://instagram.com/drmehmetdemir" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com/drmehmetdemir" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="tel:+905551234569"><i class="fas fa-phone"></i></a>
+              <a href="mailto:dr.mehmet@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h3>Dr. Mehmet Demir</h3>
+            <span class="specialty">Beslenme Uzmanı</span>
+            <p>Kişiye özel beslenme programları ve metabolik hastalıklar uzmanı</p>
+          </div>
+        </div>
+
+        <!-- Doktor 4 -->
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://www.pngarts.com/files/3/Doctor-Transparent.png" alt="Dr. Zeynep Şahin">
+            <div class="social-links">
+              <a href="https://instagram.com/drzeynepsahin" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com/drzeynepsahin" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="tel:+905551234570"><i class="fas fa-phone"></i></a>
+              <a href="mailto:dr.zeynep@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h3>Dr. Zeynep Şahin</h3>
+            <span class="specialty">Dermatoloji Uzmanı</span>
+            <p>Cilt hastalıkları ve estetik dermatoloji alanında uzman hekim</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Danışanlarımız Ne Diyor? Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">DANIŞANLARIMIZ NE DİYOR?</h2>
+      
+      <div class="testimonials-container">
+        <div class="testimonials-background"></div>
+        
+        <div class="testimonial-slider">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-item active">
+            <div class="testimonial-image-wrapper">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" alt="Ayşe Yılmaz">
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="testimonial-quote">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">Dr. Apak sayesinde sağlığıma kavuştum. Fonksiyonel tıp yaklaşımı ile yıllardır çözemediğim kronik yorgunluk sorunumu birkaç ayda çözdük.</p>
+              <div class="testimonial-author">
+                <h4>Ayşe Yılmaz</h4>
+                <p>35 yaşında, Öğretmen</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2 -->
+          <div class="testimonial-item">
+            <div class="testimonial-image-wrapper">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Mehmet Kaya">
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="testimonial-quote">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">Saç mezoterapisi uygulaması sonrası saçlarım gözle görülür şekilde güçlendi ve dökülmeler durdu. Uzman ekibe teşekkür ederim.</p>
+              <div class="testimonial-author">
+                <h4>Mehmet Kaya</h4>
+                <p>42 yaşında, Mühendis</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3 -->
+          <div class="testimonial-item">
+            <div class="testimonial-image-wrapper">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="Zeynep Demir">
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="testimonial-quote">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">Genetik testler sayesinde sağlık risklerimi erkenden öğrendim ve gerekli önlemleri aldım. Profesyonel yaklaşımları için çok teşekkür ederim.</p>
+              <div class="testimonial-author">
+                <h4>Zeynep Demir</h4>
+                <p>38 yaşında, Avukat</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 4 -->
+          <div class="testimonial-item">
+            <div class="testimonial-image-wrapper">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Ahmet Şahin">
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="testimonial-quote">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">Beslenme düzenimin ve mikrobiomumun analizi sayesinde uzun zamandır yaşadığım sindirim sorunlarından kurtuldum. Harika bir klinik!</p>
+              <div class="testimonial-author">
+                <h4>Ahmet Şahin</h4>
+                <p>45 yaşında, İşletmeci</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-indicators">
+          <span class="indicator active" data-index="0"></span>
+          <span class="indicator" data-index="1"></span>
+          <span class="indicator" data-index="2"></span>
+          <span class="indicator" data-index="3"></span>
+        </div>
+        
+        <div class="testimonial-nav">
+          <button class="testimonial-nav-btn prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="testimonial-nav-btn next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="container">
+
+
+
+      <div class="cards-grid">
+        <div class="search-card search-card-orange">
+          <div class="card-content">
+            <h2>Detaylı Bilgiye İhtiyacım Var</h2>
+            <p>Uzman ekibimizle size en iyi teklifleri sunuyoruz.Sizin için en iyi araba seçeneklerini bulup size sunuyoruz.</p>
+            <a href="detailed-info.html" class="search-button" style="background-color:var(--secondary-color);">
+              Araçları Bul
+              <i class="fas fa-search"></i>
+            </a>
+          </div>
+          <div class="card-image">
+            <img src="https://png.pngtree.com/png-clipart/20240131/original/pngtree-thinking-woman-doctor-phoning-with-photo-png-image_14198554.png" alt="Mercedes" class="car-image">
+          </div>
+        </div>
+
+        <div class="search-card search-card-dark">
+          <div class="card-content">
+            <h2>Sıkça Sorulan Sorular</h2>
+            <p>Aklınıza takılan her soruyu size en iyi şekilde cevaplayabiliriz.Detaylı bilgi almak için tıklayınız.</p>
+            <a href="#" class="search-button">
+              Araçları Bul
+              <i class="fas fa-search"></i>
+            </a>
+          </div>
+          <div class="card-images">
+            <img src="https://i0.wp.com/doktordanhaberler.com/wp-content/uploads/2024/01/doktordanhaberler-anasayfa-doktor.png?resize=451%2C642&ssl=1" alt="BMW" class="car-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- SSS Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title text-center">SIKÇA SORULAN SORULAR</h2>
+      <div class="faq-video-container">
+        <div class="faq-content">
+          <div class="faq-accordion">
+            <div class="faq-item">
+              <div class="faq-question">
+                <h3>Fonksiyonel tıp nedir?</h3>
+                <span class="faq-icon"><i class="fas fa-plus"></i></span>
+              </div>
+              <div class="faq-answer">
+                <p>Fonksiyonel tıp, hastalıkların kök nedenlerini araştıran ve kişiye özel tedavi yaklaşımları sunan modern bir tıp yaklaşımıdır. Klasik tıbbın aksine sadece belirtileri değil, hastalığın altında yatan nedenleri tedavi etmeyi hedefler.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h3>Mezoterapi uygulamaları ne kadar sürer?</h3>
+                <span class="faq-icon"><i class="fas fa-plus"></i></span>
+              </div>
+              <div class="faq-answer">
+                <p>Mezoterapi seansları ortalama 30-45 dakika sürmektedir. Tedavi planına bağlı olarak genellikle 4-8 seans arasında uygulama yapılır ve seanslar haftalık olarak planlanır.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h3>Genetik testler nasıl yapılır?</h3>
+                <span class="faq-icon"><i class="fas fa-plus"></i></span>
+              </div>
+              <div class="faq-answer">
+                <p>Genetik testler için basit bir tükürük örneği veya kan örneği alınır. Örnekler özel laboratuvarlarda analiz edilir ve sonuçlar 2-3 hafta içinde hazırlanır. Sonuçlar uzman hekimlerimiz tarafından detaylı olarak değerlendirilir.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h3>Botoks işlemi acı verir mi?</h3>
+                <span class="faq-icon"><i class="fas fa-plus"></i></span>
+              </div>
+              <div class="faq-answer">
+                <p>Botoks uygulaması minimal invaziv bir işlemdir. İşlem öncesi uygulanan lokal anestezik kremler sayesinde hasta konforu maksimum düzeyde sağlanır. İşlem sırasında hafif bir batma hissi olabilir.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="video-content">
+          <div class="video-wrapper">
+            <img src="https://boldlab.qodeinteractive.com/wp-content/uploads/2018/11/h2-img-1.png" alt="Laptop" class="laptop-image">
+            <div class="play-button">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <div class="blog-container">
+      <div class="blog-header">
+        <h2>Son Blog Yazıları</h2>
+      </div>
+      
+      <div class="blog-grid">
+        <!-- Blog Card 1 -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <span class="blog-category">Sağlık</span>
+            <img src="https://img.freepik.com/free-photo/healthy-lifestyle-healthy-habits-concept_23-2150165538.jpg" alt="Sağlıklı Yaşam">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> 6 Mart 2024</span>
+              <span><i class="far fa-comment"></i> 5 Yorum</span>
+            </div>
+            <h3 class="blog-title">Sağlıklı Yaşam İçin Önemli İpuçları</h3>
+            <p class="blog-excerpt">
+              Günlük hayatınızda uygulayabileceğiniz basit ama etkili sağlıklı yaşam önerileri ile yaşam kalitenizi artırın.
+            </p>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-avatar">
+                  <img src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg" alt="Dr. Ayşe Kaya">
+                </div>
+                <span class="author-name">Dr. Ayşe Kaya</span>
+              </div>
+              <a href="#" class="read-more">
+                Devamını Oku <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Card 2 -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <span class="blog-category">Beslenme</span>
+            <img src="https://img.freepik.com/free-photo/top-view-fresh-vegetables-with-herbs_23-2148478897.jpg" alt="Sağlıklı Beslenme">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> 5 Mart 2024</span>
+              <span><i class="far fa-comment"></i> 3 Yorum</span>
+            </div>
+            <h3 class="blog-title">Doğru Beslenmenin Temelleri</h3>
+            <p class="blog-excerpt">
+              Dengeli ve sağlıklı beslenme alışkanlıkları edinmek için bilmeniz gereken temel prensipler ve öneriler.
+            </p>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-avatar">
+                  <img src="https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg" alt="Uzm. Mehmet Yılmaz">
+                </div>
+                <span class="author-name">Uzm. Mehmet Yılmaz</span>
+              </div>
+              <a href="#" class="read-more">
+                Devamını Oku <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Card 3 -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <span class="blog-category">Yaşam</span>
+            <img src="https://incipsikoloji.com/wp-content/uploads/2023/08/woman-is-doing-meditation-2022-11-16-18-03-25-utc-min-scaled.jpg" alt="Meditasyon ve Stres Yönetimi">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> 4 Mart 2024</span>
+              <span><i class="far fa-comment"></i> 7 Yorum</span>
+            </div>
+            <h3 class="blog-title">Stres Yönetimi ve Meditasyon</h3>
+            <p class="blog-excerpt">
+              Modern yaşamın getirdiği stresi yönetmek için etkili meditasyon teknikleri ve günlük uygulamalar.
+            </p>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-avatar">
+                  <img src="https://img.freepik.com/free-photo/young-female-psychologist-sitting-chair-taking-notes-therapy-session_1098-18860.jpg" alt="Psk. Zeynep Demir">
+                </div>
+                <span class="author-name">Psk. Zeynep Demir</span>
+              </div>
+              <a href="#" class="read-more">
+                Devamını Oku <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Randevu Bölümü -->
+  <section class="contact-section">
+    <h2 class="section-title text-center">Randevu Al</h2>
+    <div class="container">
+      <div class="contact-form-container">
+        <div class="consultation-header">
+          <h3>Randevu Al</h3>
+          <p>veya Arayın: +8 (123) 456 789 12</p>
+        </div>
+        <div class="contact-form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Adınız *">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="E-posta Adresiniz *">
+          </div>
+          <button class="get-it-now-btn">Hemen Başvur</button>
+        </div>
+      </div>
+
+      <div class="contact-info-container">
+        <div class="contact-info">
+          <div class="contact-col">
+            <h4>İletişim Bilgilerimiz</h4>
+            <ul class="contact-details">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <p>Atatürk Bulvarı No: 127,</p>
+                  <p>Çankaya, Ankara</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                  <p>7/24 Bize Ulaşın</p>
+                  <p>+90 (312) 456 78 90</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <div>
+                  <p>Pzt - Cuma: 08:00 - 20:00</p>
+                  <p>Cmt - Pzr: 09:00 - 16:00</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="contact-col">
+            <h4>Çalışma Saatleri</h4>
+            <ul class="hours-list">
+              <li>
+                <span class="day">Pazartesi</span>
+                <span class="hours">08:00 - 21:00</span>
+              </li>
+              <li>
+                <span class="day">Salı</span>
+                <span class="hours">08:00 - 21:00</span>
+              </li>
+              <li>
+                <span class="day">Çarşamba</span>
+                <span class="hours">08:00 - 21:00</span>
+              </li>
+              <li>
+                <span class="day">Perşembe</span>
+                <span class="hours">08:00 - 21:00</span>
+              </li>
+              <li>
+                <span class="day">Cuma</span>
+                <span class="hours">08:00 - 21:00</span>
+              </li>
+              <li>
+                <span class="day">Cumartesi/Pazar</span>
+                <span class="hours">08:00 - 18:00</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="map-container">
+          <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.4834956222266!2d32.85556791744384!3d39.90903399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347126cc9e01f%3A0x8d28b9995abb31a3!2zS8SxesSxbGF5LCBBdGF0w7xyayBCdWx2YXLEsSwgMDY0MjAgw4dhbmtheWEvQW5rYXJh!5e0!3m2!1str!2str!4v1620120000000!5m2!1str!2str" allowfullscreen="" loading="lazy"></iframe>
+            <div class="map-overlay">
+              <div class="map-button">
+                <p>Haritayı büyütün</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-buttons">
+        <a href="#" class="contact-btn find-btn">
+          <div class="btn-icon">
+            <i class="fas fa-map-marked-alt"></i>
+          </div>
+          <div class="btn-text">
+            <span class="btn-subtitle">Size en yakın kliniği bulun</span>
+            <span class="btn-title">Haritada Bizi Bulun</span>
+          </div>
+        </a>
+        <a href="tel:+903124567890" class="contact-btn call-btn">
+          <div class="btn-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="btn-text">
+            <span class="btn-subtitle">Randevu için arayın!</span>
+            <span class="btn-title">(0312) 456 78 90</span>
+          </div>
+        </a>
+        <a href="mailto:iletisim@drapakslongevity.com" class="contact-btn email-btn">
+          <div class="btn-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="btn-text">
+            <span class="btn-subtitle">Bize mesaj gönderin!</span>
+            <span class="btn-title">E-posta Gönder</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Yukarı Çık Butonu -->
+  <div class="scroll-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/testimonials.js"></script>
+  <script>
+    // Load components
+    fetch('components/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+      });
+
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+      
+    // Yukarı çık butonu fonksiyonları
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      
+      // Sayfa scroll olduğunda butonu göster/gizle
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          scrollToTopBtn.classList.add('visible');
+        } else {
+          scrollToTopBtn.classList.remove('visible');
+        }
+      });
+      
+      // Butona tıklandığında yukarı çık
+      scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Mobil uyumluluğu arttırmak için ekstra fonksiyonlar
+      const sliders = document.querySelectorAll('.campaign-cars-slider');
+      
+      sliders.forEach(slider => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        slider.addEventListener('touchstart', (e) => {
+          isDown = true;
+          startX = e.touches[0].pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
+        
+        slider.addEventListener('touchend', () => {
+          isDown = false;
+        });
+        
+        slider.addEventListener('touchcancel', () => {
+          isDown = false;
+        });
+        
+        slider.addEventListener('touchmove', (e) => {
+          if(!isDown) return;
+          e.preventDefault();
+          const x = e.touches[0].pageX - slider.offsetLeft;
+          const walk = (x - startX) * 1.5; // Hız çarpanı
+          slider.scrollLeft = scrollLeft - walk;
+        }, { passive: false });
+      });
+      
+      // Sayfanın responsive durumunu kontrol etme
+      function checkResponsive() {
+        if (window.innerWidth <= 768) {
+          // Mobil görünüm için ek düzenlemeler
+          document.querySelectorAll('.search-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+              if (e.target.tagName !== 'A') {
+                const link = this.querySelector('a');
+                if (link) link.click();
+              }
+            });
+          });
+        }
+      }
+      
+      // Sayfa yüklendiğinde ve boyutu değiştiğinde kontrol et
+      checkResponsive();
+      window.addEventListener('resize', checkResponsive);
+    });
+  </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hero Slider İşlevselliği
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.slider-dot');
+      const prevBtn = document.querySelector('.slider-nav.prev');
+      const nextBtn = document.querySelector('.slider-nav.next');
+      let currentSlide = 0;
+      const slideCount = slides.length;
+      
+      // Slider'ı başlat
+      function showSlide(index) {
+        if (index >= slideCount) index = 0;
+        if (index < 0) index = slideCount - 1;
+        
+        // Aktif slaytı güncelle
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+        
+        // Aktif noktayı güncelle
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+        
+        currentSlide = index;
+      }
+      
+      // Otomatik slider için zamanlayıcı
+      let slideInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000); // 5 saniyede bir değiştir
+      
+      // Butonlar için olay dinleyicileri
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
+          showSlide(currentSlide - 1);
+          // Otomatik kaydırmayı yeniden başlat
+          slideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          clearInterval(slideInterval); // Otomatik kaydırmayı durdur
+          showSlide(currentSlide + 1);
+          // Otomatik kaydırmayı yeniden başlat
+          slideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        });
+      }
+      
+      // Noktalara tıklama
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          clearInterval(slideInterval);
+          showSlide(index);
+          slideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        });
+      });
+      
+      // Animasyonları doğru zamanlama için slider'ı başlat
+      showSlide(0);
+      
+      // SSS Akordiyon Fonksiyonalitesi
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          // Diğer tüm açık öğeleri kapat
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+          
+          // Tıklanan öğenin durumunu değiştir
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Video Oynatma Butonu İşlevselliği
+      const playButton = document.querySelector('.play-button');
+      
+      if (playButton) {
+        playButton.addEventListener('click', function() {
+          // Burada video oynatma fonksiyonunu ekleyebilirsiniz
+          alert('Video oynatılıyor...');
+        });
+      }
+    });
+  </script>
+
+  <style>
+  /* Mevcut CSS'lere ek olarak */
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .about-left {
+    flex: 1;
+  }
+
+  .about-right {
+    flex: 1;
+  }
+
+  .clinic-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hero section görsellerini düzenleme */
+  .hero-slide {
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Responsive düzenlemeler */
+  @media (max-width: 1024px) {
+    .about-content {
+      flex-direction: column;
+    }
+
+    .clinic-image {
+      height: 300px;
+    }
+
+    .hero-slide {
+      height: 500px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .clinic-image {
+      height: 250px;
+    }
+
+    .hero-slide {
+      height: 400px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .clinic-image {
+      height: 200px;
+    }
+
+    .hero-slide {
+      height: 300px;
+    }
+  }
+  </style>
+
+  <style>
+  .service-category {
+    margin-bottom: 60px;
+  }
+
+  .category-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .service-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .service-image {
+    position: relative;
+    width: 100%;
+    padding-top: 66.67%; /* 3:2 en-boy oranı */
+    overflow: hidden;
+  }
+
+  .service-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .service-image img {
+    transform: scale(1.1);
+  }
+
+  .service-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .service-content h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .service-content p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0 15px;
+    }
+
+    .service-number {
+      font-size: 20px;
+      padding: 8px 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .category-title {
+      font-size: 24px;
+    }
+
+    .service-content h4 {
+      font-size: 18px;
+    }
+
+    .service-content p {
+      font-size: 14px;
+    }
+
+    .service-number {
+      font-size: 18px;
+      padding: 6px 10px;
+      top: 15px;
+      right: 15px;
+    }
+  }
+  </style>
+
+  <style>
+  .vertical-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  </style>
+
+  <!-- Hizmetler JavaScript - Kart Yüksekliklerini Eşitleme -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Kart yükseklikleri ve içerik düzenlemeleri
+      function equalizeCardHeights() {
+        // Yatay kaydırma kartları
+        const horizontalCards = document.querySelectorAll('.horizontal-scroll .service-card');
+        resetHeights(horizontalCards);
+        equalizeHeights(horizontalCards);
+        
+        // Dikey grid kartları
+        const verticalCards = document.querySelectorAll('.vertical-grid .service-card');
+        resetHeights(verticalCards);
+        equalizeHeights(verticalCards);
+        
+        // Başlık yüksekliklerini eşitleme
+        equalizeHeaderHeights('.horizontal-scroll .service-card h4');
+        equalizeHeaderHeights('.vertical-grid .service-card h4');
+        
+        // İçerik yüksekliklerini eşitleme
+        equalizeContentHeights('.horizontal-scroll .service-card p');
+        equalizeContentHeights('.vertical-grid .service-card p');
+      }
+      
+      // Yükseklikleri sıfırlama
+      function resetHeights(elements) {
+        elements.forEach(el => {
+          el.style.height = 'auto';
+          const content = el.querySelector('.service-content');
+          if (content) content.style.height = 'auto';
+        });
+      }
+      
+      // Yükseklikleri eşitleme
+      function equalizeHeights(elements) {
+        if (elements.length === 0) return;
+        
+        let maxHeight = 0;
+        elements.forEach(el => {
+          const height = el.offsetHeight;
+          maxHeight = Math.max(maxHeight, height);
+        });
+        
+        elements.forEach(el => {
+          el.style.height = maxHeight + 'px';
+        });
+      }
+      
+      // Başlık yüksekliklerini eşitleme
+      function equalizeHeaderHeights(selector) {
+        const headers = document.querySelectorAll(selector);
+        if (headers.length === 0) return;
+        
+        let maxHeight = 0;
+        headers.forEach(header => {
+          header.style.height = 'auto';
+          const height = header.scrollHeight;
+          maxHeight = Math.max(maxHeight, height);
+        });
+        
+        headers.forEach(header => {
+          header.style.height = maxHeight + 'px';
+        });
+      }
+      
+      // İçerik yüksekliklerini eşitleme
+      function equalizeContentHeights(selector) {
+        const contents = document.querySelectorAll(selector);
+        if (contents.length === 0) return;
+        
+        let maxHeight = 0;
+        contents.forEach(content => {
+          content.style.height = 'auto';
+          const height = content.scrollHeight;
+          maxHeight = Math.max(maxHeight, height);
+        });
+        
+        contents.forEach(content => {
+          content.style.height = maxHeight + 'px';
+        });
+      }
+      
+      // Sayfa yüklendiğinde çalıştır
+      equalizeCardHeights();
+      
+      // Pencere boyutu değiştiğinde tekrar çalıştır
+      window.addEventListener('resize', function() {
+        setTimeout(equalizeCardHeights, 100);
+      });
+    });
+  </script>
+
+  <!-- Hizmetler JavaScript - Yatay Kaydırma için -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Yatay kaydırma için butonlara tıklama
+      const servicesSlider = document.querySelector('.services-slider');
+      if (servicesSlider) {
+        const horizontalScroll = servicesSlider.querySelector('.horizontal-scroll');
+        const slideWidth = 340; // Kart genişliği + margin
+        
+        // Sol ok tıklama
+        servicesSlider.addEventListener('click', function(e) {
+          const rect = servicesSlider.getBoundingClientRect();
+          const isLeftSide = e.clientX - rect.left < rect.width / 2;
+          
+          if (isLeftSide) {
+            // Sol tarafa kaydır
+            horizontalScroll.scrollBy({
+              left: -slideWidth,
+              behavior: 'smooth'
+            });
+          } else {
+            // Sağ tarafa kaydır
+            horizontalScroll.scrollBy({
+              left: slideWidth,
+              behavior: 'smooth'
+            });
+          }
+        });
+      }
+    });
+  </script>
+
+  <style>
+    .faq-section {
+      padding: 80px 0;
+      background-color: #f8f9fa;
+    }
+
+    .faq-video-container {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .faq-content {
+      flex: 1;
+      max-width: 50%;
+    }
+
+    .video-content {
+      flex: 1;
+      max-width: 50%;
+      position: relative;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      overflow: hidden;
+    }
+
+    .laptop-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .play-button i {
+      font-size: 30px;
+      color: #333;
+    }
+
+    .play-button:hover {
+      background: #fff;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .faq-accordion {
+      margin-top: 30px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 20px;
+      max-height: 1000px;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    @media (max-width: 992px) {
+      .faq-video-container {
+        flex-direction: column;
+      }
+
+      .faq-content,
+      .video-content {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .faq-question h3 {
+        font-size: 16px;
+      }
+
+      .play-button {
+        width: 60px;
+        height: 60px;
+      }
+
+      .play-button i {
+        font-size: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // SSS Akordiyon Fonksiyonalitesi
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          // Diğer tüm açık öğeleri kapat
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+          
+          // Tıklanan öğenin durumunu değiştir
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Video Oynatma Butonu İşlevselliği
+      const playButton = document.querySelector('.play-button');
+      
+      if (playButton) {
+        playButton.addEventListener('click', function() {
+          // Burada video oynatma fonksiyonunu ekleyebilirsiniz
+          alert('Video oynatılıyor...');
+        });
+      }
+    });
+  </script>
+
+  <style>
+    .text-center {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 35px;
+      font-weight: 600;
+      color: #333;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--primary-color, #007bff);
+    }
+  </style>
+
+
+</body>
+</html> 
