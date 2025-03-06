@@ -79,9 +79,9 @@
   }
   
   .logo img {
-    height: 82px;
+    height: 180px;
     width: auto;
-    filter: brightness(0) saturate(100%) invert(46%) sepia(85%) saturate(2836%) hue-rotate(176deg) brightness(100%) contrast(102%);
+    background: transparent;
   }
   
   .nav-menu ul {
