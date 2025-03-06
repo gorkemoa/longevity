@@ -86,12 +86,13 @@
   .btn {
     display: inline-block;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius-sm);
+    border-radius: 35px;
     text-decoration: none;
     transition: var(--transition-normal);
     font-weight: 600;
     cursor: pointer;
     border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   .btn-primary {
@@ -100,7 +101,7 @@
   }
   
   .btn-primary:hover {
-    background-color: darken(var(--primary-color), 10%);
+    background-color: var(--primary-color);
   }
   
   /* Hero Section */
@@ -1353,11 +1354,7 @@
     filter: drop-shadow(8px 8px 15px rgba(0, 0, 0, 0.3));
   }
 
-  .after-hours-right {
-    flex: 1;
-    text-align: right;
-    z-index: 2;
-  }
+
 
   .btn-outline {
     display: inline-block;
@@ -1421,10 +1418,7 @@
       width: 100%;
     }
 
-    .after-hours-right {
-      text-align: center;
-      margin-top: var(--spacing-md);
-    }
+   
 
     .after-hours-left .highlight-text {
       font-size: 24px;
