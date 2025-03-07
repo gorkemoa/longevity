@@ -3412,7 +3412,7 @@
     flex: 1;
     padding: 35px;
     position: relative;
-    min-width: 300px;
+    min-width: 320px;
   }
 
   .contact-col h4 {
@@ -3467,43 +3467,52 @@
 
   .hours-list {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .hours-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 0;
-    margin-bottom: 0;
+    padding: 4px 0;
     font-size: 0.85rem;
-    white-space: nowrap;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  }
+
+  .hours-list li:last-child {
+    border-bottom: none;
   }
 
   .hours-list .day {
     font-weight: 500;
-    margin-right: 30px;
-    min-width: 120px;
+    flex: 0 0 140px;
+    white-space: nowrap;
+    color: var(--text-color);
   }
 
   .hours-list .hours {
     color: var(--health-primary);
     font-weight: 500;
     text-align: right;
+    white-space: nowrap;
+    padding-left: 15px;
   }
 
   @media (max-width: 768px) {
-    .contact-col {
-      min-width: 250px;
-      padding: 25px;
-    }
-    
     .hours-list li {
       font-size: 0.8rem;
+      padding: 6px 0;
     }
     
     .hours-list .day {
-      min-width: 100px;
-      margin-right: 20px;
+      flex: 0 0 120px;
+    }
+    
+    .contact-col {
+      min-width: 280px;
+      padding: 25px;
     }
   }
 
