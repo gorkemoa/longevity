@@ -35,16 +35,33 @@
     });
   </script>
   <style>
-    .detail-link {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      color: #2c3e50;
-      text-decoration: none;
-      font-size: 14px;
+    .service-content {
+      position: relative;
+      padding-bottom: 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      transition: color 0.3s ease;
+    }
+    
+    .service-content h4,
+    .service-content p {
+      text-align: center;
+      width: 100%;
+    }
+    
+    .detail-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid #007bff;
+      border-radius: 4px;
+      margin-top: 15px;
     }
 
     .detail-link i {
@@ -53,16 +70,12 @@
     }
 
     .detail-link:hover {
-      color: #3498db;
+      background-color: #007bff;
+      color: white;
     }
 
     .detail-link:hover i {
       transform: translateX(5px);
-    }
-
-    .service-content {
-      position: relative;
-      padding-bottom: 45px;
     }
   </style>
 </head>
@@ -227,6 +240,67 @@
     <div class="container">
       <h2 class="section-title">FONKSİYONEL TIP</h2>
       
+      <style>
+        .service-card {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        .service-content {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          padding: 1.5rem;
+          text-align: center;
+        }
+
+        .service-content h4 {
+          margin-bottom: 1rem;
+          text-align: center;
+        }
+
+        .service-content p {
+          margin-bottom: 1.5rem;
+          flex-grow: 1;
+          text-align: center;
+        }
+
+        .detail-link-container {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          margin-top: auto;
+        }
+
+        .detail-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          color: #007bff;
+          text-decoration: none;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          padding: 0.5rem 1.5rem;
+          border: 1px solid #007bff;
+          border-radius: 4px;
+        }
+
+        .detail-link:hover {
+          background-color: #007bff;
+          color: white;
+        }
+
+        .detail-link i {
+          transition: transform 0.3s ease;
+        }
+
+        .detail-link:hover i {
+          transform: translateX(4px);
+        }
+      </style>
+
       <!-- Fonksiyonel Tıp - Yatay Kaydırmalı -->
       <div class="service-category">
  
@@ -239,10 +313,12 @@
               <div class="service-content">
                 <h4>FONKSİYONEL TIP KONSÜLTASYONU</h4>
                 <p>Kişiselleştirilmiş sağlık değerlendirmesi ve tedavi planlarıyla kronik hastalıkların kök nedenlerini tespit ediyoruz.</p>
-                <a href="#" class="detail-link">
-                  Detaylı Bilgi
-                  <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="detail-link-container">
+                  <a href="#" class="detail-link">
+                    Detaylı Bilgi
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
             
@@ -253,10 +329,12 @@
               <div class="service-content">
                 <h4>BESLENME VE DETOKS</h4>
                 <p>Vücudunuzun ihtiyaçlarına özel beslenme programları ve detoks protokolleri ile sağlıklı yaşamı destekliyoruz.</p>
-                <a href="#" class="detail-link">
-                  Detaylı Bilgi
-                  <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="detail-link-container">
+                  <a href="#" class="detail-link">
+                    Detaylı Bilgi
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
             
@@ -267,10 +345,12 @@
               <div class="service-content">
                 <h4>GENETİK TEST VE ANALİZ</h4>
                 <p>DNA analizleri ile sağlık risklerinizi belirliyor, size özel önleyici tedavi yaklaşımları sunuyoruz.</p>
-                <a href="#" class="detail-link">
-                  Detaylı Bilgi
-                  <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="detail-link-container">
+                  <a href="#" class="detail-link">
+                    Detaylı Bilgi
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
             
@@ -281,10 +361,12 @@
               <div class="service-content">
                 <h4>HORMONAL DENGE</h4>
                 <p>Hormon dengesizliklerini kapsamlı testlerle tespit ediyor, doğal ve bütüncül çözümlerle dengeyi yeniden sağlıyoruz.</p>
-                <a href="#" class="detail-link">
-                  Detaylı Bilgi
-                  <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="detail-link-container">
+                  <a href="#" class="detail-link">
+                    Detaylı Bilgi
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
             
@@ -295,10 +377,12 @@
               <div class="service-content">
                 <h4>BAĞIRSAK SAĞLIĞI</h4>
                 <p>Mikrobiom analizleri ve kişiselleştirilmiş protokollerle sindirim sistemi sağlığınızı iyileştiriyor, bağışıklığınızı güçlendiriyoruz.</p>
-                <a href="#" class="detail-link">
-                  Detaylı Bilgi
-                  <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="detail-link-container">
+                  <a href="#" class="detail-link">
+                    Detaylı Bilgi
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -329,10 +413,12 @@
             <div class="service-content">
               <h4>BOTOKS</h4>
               <p>Kırışıklıkların giderilmesi ve yüz ifadesinin yenilenmesi için uzman ekibimizle kişiselleştirilmiş botoks uygulamaları.</p>
-              <a href="#" class="detail-link">
-                Detaylı Bilgi
-                <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="detail-link-container">
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
           
@@ -343,10 +429,12 @@
             <div class="service-content">
               <h4>GLUTATYON</h4>
               <p>Güçlü antioksidan etkisiyle cilt tonunu eşitleyen, parlaklık kazandıran ve toksinleri uzaklaştıran glutatyon uygulamaları.</p>
-              <a href="#" class="detail-link">
-                Detaylı Bilgi
-                <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="detail-link-container">
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
           
@@ -357,10 +445,12 @@
             <div class="service-content">
               <h4>CİLT YENİLEME</h4>
               <p>Cildinizin doğal yenilenme sürecini hızlandıran, ince çizgileri ve leke sorunlarını hedefleyen mezoterapi uygulamaları.</p>
-              <a href="#" class="detail-link">
-                Detaylı Bilgi
-                <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="detail-link-container">
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
           
@@ -371,10 +461,12 @@
             <div class="service-content">
               <h4>SAÇ MEZOTERAPİSİ</h4>
               <p>Saç dökülmesi sorunlarına karşı etkili, saç köklerini besleyen ve güçlendiren özel mezoterapi formülleri ile saç sağlığınızı yeniden kazanın.</p>
-              <a href="#" class="detail-link">
-                Detaylı Bilgi
-                <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="detail-link-container">
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
           
@@ -385,10 +477,12 @@
             <div class="service-content">
               <h4>SELÜLİT TEDAVİSİ</h4>
               <p>Selülit görünümünü azaltan, cilt dokusunu iyileştiren ve sıkılaştıran özel formüller ile vücut konturlarınızı yeniden şekillendirin.</p>
-              <a href="#" class="detail-link">
-                Detaylı Bilgi
-                <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="detail-link-container">
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
           
@@ -399,10 +493,12 @@
             <div class="service-content">
               <h4>GÜZELLİK ENJEKSİYONLARI</h4>
               <p>Dolgu uygulamaları, PRP ve hyalüronik asit ile yüz konturlarını iyileştiren, yaşlanma belirtilerini geciktiren enjeksiyon tedavileri.</p>
-              <a href="#" class="detail-link">
-                Detaylı Bilgi
-                <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="detail-link-container">
+                <a href="#" class="detail-link">
+                  Detaylı Bilgi
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -3981,7 +3981,7 @@
     padding: 8px 5px;
     font-size: 13px;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--primary-color);
     text-decoration: none;
     white-space: nowrap;
     letter-spacing: 0.5px;
@@ -3989,10 +3989,7 @@
     transition: all var(--transition-normal);
   }
 
-  .nav-menu ul li a:hover,
-  .nav-menu ul li a.active {
-    color: var(--health-primary);
-  }
+ 
 
   /* Arama kutusu */
   .search-box {
@@ -4010,8 +4007,8 @@
 
   .search-box input:focus {
     outline: none;
-    border-color: var(--health-primary);
-    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(32, 66, 156, 0.15);
     width: 220px;
   }
 
@@ -4024,7 +4021,7 @@
     transform: translateY(-50%);
     width: 35px;
     height: 100%;
-    color: var(--health-primary);
+    color: var(--primary-color);
     cursor: pointer;
     transition: all var(--transition-normal);
     display: flex;
@@ -4033,7 +4030,8 @@
   }
 
   .search-box button:hover {
-    color: var(--health-dark);
+    color: var(--primary-color);
+    opacity: 0.8;
   }
 
   .search-box input::placeholder {
@@ -4048,20 +4046,20 @@
   }
 
   .social-icons a {
-    color: var(--health-primary);
+    color: var(--primary-color);
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: var(--health-light);
+    background-color: rgba(32, 66, 156, 0.1);
     transition: all var(--transition-normal);
   }
 
   .social-icons a:hover {
     color: var(--white);
-    background-color: var(--health-primary);
+    background-color: var(--primary-color);
     transform: translateY(-2px);
   }
 
@@ -4677,7 +4675,7 @@
 
   .info-text .value {
     font-size: 0.8rem;
-    color: var(--text-color);
+    color: var(--primary-color);
     font-weight: 500;
   }
 
@@ -4750,7 +4748,7 @@
     padding: 8px 5px;
     font-size: 13px;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--primary-color);
     text-decoration: none;
     white-space: nowrap;
     letter-spacing: 0.5px;
@@ -4758,10 +4756,7 @@
     transition: all var(--transition-normal);
   }
 
-  .nav-menu ul li a:hover,
-  .nav-menu ul li a.active {
-    color: var(--health-primary);
-  }
+
 
   /* Arama kutusu */
   .search-box {
@@ -4779,8 +4774,8 @@
 
   .search-box input:focus {
     outline: none;
-    border-color: var(--health-primary);
-    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(32, 66, 156, 0.15);
     width: 220px;
   }
 
@@ -4793,7 +4788,7 @@
     transform: translateY(-50%);
     width: 35px;
     height: 100%;
-    color: var(--health-primary);
+    color: var(--primary-color);
     cursor: pointer;
     transition: all var(--transition-normal);
     display: flex;
@@ -4802,7 +4797,8 @@
   }
 
   .search-box button:hover {
-    color: var(--health-dark);
+    color: var(--primary-color);
+    opacity: 0.8;
   }
 
   .search-box input::placeholder {
@@ -4817,20 +4813,20 @@
   }
 
   .social-icons a {
-    color: var(--health-primary);
+    color: var(--primary-color);
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    ;
+    background-color: rgba(32, 66, 156, 0.1);
     transition: all var(--transition-normal);
   }
 
   .social-icons a:hover {
     color: var(--white);
-    background-color: var(--health-primary);
+    background-color: var(--primary-color);
     transform: translateY(-2px);
   }
 
