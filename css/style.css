@@ -5087,3 +5087,43 @@
     }
   }
   
+  .doctor-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    width: 100%;
+  }
+
+  .doctor-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .doctor-btn:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .doctor-btn:hover i {
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    .doctor-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+  }
+  
