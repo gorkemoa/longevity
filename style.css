@@ -3394,7 +3394,7 @@
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    width: 60%;
+    width: 100%;
     position: relative;
   }
 
@@ -3412,15 +3412,15 @@
     flex: 1;
     padding: 35px;
     position: relative;
+    min-width: 300px;
   }
 
   .contact-col h4 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
   }
 
   .contact-col h4::after {
@@ -3465,28 +3465,46 @@
     color: #333;
   }
 
+  .hours-list {
+    width: 100%;
+  }
+
   .hours-list li {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px dashed #eee;
-  }
-
-  .hours-list li:last-child {
-    border-bottom: none;
+    align-items: center;
+    padding: 6px 0;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 
   .hours-list .day {
-    color: #333;
-    font-weight: 600;
+    font-weight: 500;
+    margin-right: 30px;
+    min-width: 120px;
   }
 
   .hours-list .hours {
-    color: var(--primary-color, #48CAE4);
-    font-weight: 600;
-    background: rgba(74, 162, 218, 0.1);
-    padding: 4px 12px;
-    border-radius: 20px;
+    color: var(--health-primary);
+    font-weight: 500;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .contact-col {
+      min-width: 250px;
+      padding: 25px;
+    }
+    
+    .hours-list li {
+      font-size: 0.8rem;
+    }
+    
+    .hours-list .day {
+      min-width: 100px;
+      margin-right: 20px;
+    }
   }
 
   .map-container {
@@ -3569,12 +3587,12 @@
   }
 
   .call-btn {
-    background: linear-gradient(135deg, #6D7CD3 0%, #5A66B0 100%);
+    background: linear-gradient(135deg, #FF8A8A 0%, #FF6B6B 100%);
     color: #fff;
   }
 
   .email-btn {
-    background: linear-gradient(135deg, #5c9ead 0%, #4A8998 100%);
+    background: linear-gradient(135deg, #FF8A8A 0%, #FF6B6B 100%);
     color: #fff;
   }
 
@@ -3747,14 +3765,6 @@
     .map-wrapper {
       min-height: 250px;
     }
-  }
-
-  /* Sağlık Kliniği Footer Stili */
-  .footer {
-    background-color: var(--health-light);
-    color: var(--text-color);
-    padding: var(--spacing-xl) 0 var(--spacing-lg);
-    position: relative;
   }
 
   

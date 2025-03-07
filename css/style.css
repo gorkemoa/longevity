@@ -66,7 +66,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0;
     box-sizing: border-box;
   }
   
@@ -3168,31 +3168,8 @@
     overflow: hidden;
   }
 
-  .contact-form-container::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-    background: var(--primary-color, #48CAE4);
-    opacity: 0.1;
-    border-radius: 50%;
-    z-index: -1;
-  }
 
-  .contact-form-container::after {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    left: -30px;
-    width: 100px;
-    height: 100px;
-    background: var(--secondary-color, #5DE0E6);
-    opacity: 0.1;
-    border-radius: 50%;
-    z-index: -1;
-  }
+
 
   .consultation-header {
     background: linear-gradient(135deg, #2b3c93 0%, #7eb53a 100%);
@@ -3647,7 +3624,7 @@
 
   /* Sağlık Kliniği Footer Stili */
   .footer {
-    background-color: var(--health-light);
+    background-color: var(--white);
     color: var(--text-color);
     padding: var(--spacing-xl) 0 var(--spacing-lg);
     position: relative;
@@ -4152,12 +4129,12 @@
   }
 
   .call-btn {
-    background: linear-gradient(135deg, #6D7CD3 0%, #5A66B0 100%);
+    background: linear-gradient(135deg, #2b3c93 0%, #7eb53a 100%);
     color: #fff;
   }
 
   .email-btn {
-    background: linear-gradient(135deg, #5c9ead 0%, #4A8998 100%);
+    background: linear-gradient(135deg, #2b3c93 0%, #7eb53a 100%);
     color: #fff;
   }
 
@@ -4332,13 +4309,7 @@
     }
   }
 
-  /* Sağlık Kliniği Footer Stili */
-  .footer {
-    background-color: var(--health-light);
-    color: var(--text-color);
-    padding: var(--spacing-xl) 0 var(--spacing-lg);
-    position: relative;
-  }
+
 
 
   
@@ -4647,7 +4618,7 @@
 
   /* Header Stilleri */
   .top-bar {
-    background-color: var(--health-light);
+    background-color: var(--white);
     color: var(--text-color);
     padding: var(--spacing-sm) 0; /* Padding'i azaltıyorum */
     border-bottom: 1px solid rgba(66, 165, 245, 0.1);
@@ -4661,20 +4632,17 @@
   }
 
   .top-bar .logo {
-    display: block;
-    margin-right: var(--spacing-xl);
-    position: relative; /* Logo konumlandırması için */
-    z-index: 2; /* Logoyu üstte tutmak için */
+    display: inline-block;
+    transition: transform 0.3s ease;
   }
 
   .top-bar .logo img {
-    height: 100px;
-    width: 200px;
-    transition: all var(--transition-normal);
+    max-height: 80px; /* Logo boyutunu artırdım */
+    transition: transform 0.3s ease;
   }
 
   .top-bar .logo:hover img {
-    transform: scale(1.2); /* Hover efektini azaltıyorum */
+    transform: scale(1.15); /* Hover efektini daha belirgin yaptım */
   }
 
   .contact-info {
@@ -4844,7 +4812,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: var(--health-light);
+    ;
     transition: all var(--transition-normal);
   }
 
@@ -5125,5 +5093,9 @@
         padding: 8px 16px;
         font-size: 13px;
     }
+  }
+  
+  .social-icons a {
+    text-decoration: none;
   }
   
