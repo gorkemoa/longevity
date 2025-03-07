@@ -1,7 +1,7 @@
 :root {
     /* Ana Renkler */
-    --primary-color: #00b7ff;
-    --secondary-color: #87AE34;
+    --primary-color: #20429C;
+    --secondary-color: #9DC01C;
     --text-color: #2c2c2c;
     --light-gray: #f5f5f5;
     --white: #ffffff;
@@ -120,9 +120,9 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: visible;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
   }
   
   .hero-slide {
@@ -250,20 +250,7 @@
     color: white;
     font-size: 1.2rem;
   }
-  
-  @media (max-width: 1200px) {
-    .hero-slider {
-      height: 80vh;
-      margin-bottom: 200px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .hero-slider {
-      height: 60vh;
-      margin-bottom: 0;
-    }
-  }
+
   
   .hero::before {
     display: none;
@@ -1285,52 +1272,84 @@
   
   /* After Hours Section */
   .after-hours {
-    padding: 0;
-    margin-top: 0;
-    background-color: var(--secondary-color);
     position: relative;
-    min-height: 120px;
-    z-index: 1;
+    background-color: var(--secondary-color);
+    padding: 0;
+    margin: 0;
+    height: 200px; /* Yüksekliği artırdım */
+    width: 100%;
+    z-index: 20;
+    border-top: none;
+    overflow: visible;
+    display: flex;
+    align-items: center; /* Dikey ortalama */
   }
 
   .after-hours-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-md);
     position: relative;
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-sm) 0;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .after-hours-left {
-    flex: 1;
-    z-index: 2;
+  .after-hours-left, .after-hours-center, .after-hours-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .after-hours-right {
+    gap: var(--spacing-md);
+  }
+
+  .health-icon-3d-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .after-hours-left .campaign-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--white);
+    margin-bottom: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .after-hours-left h2 {
-    font-size: 24px;
+    font-size: 20px;
     color: var(--white);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
 
   .after-hours-left .highlight-text {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     color: var(--white);
-    line-height: 1.2;
+    line-height: 1.1;
   }
 
   .after-hours-center {
     flex: 2;
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
     position: relative;
     z-index: 2;
   }
 
   .after-hours-center p {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--white);
     opacity: 0.9;
     max-width: 400px;
@@ -1379,58 +1398,57 @@
   }
 
   .hero-slider + .after-hours {
-    margin-top: -230px;
+    margin-top: 0;
+    position: relative;
+    z-index: 20;
   }
+
+
+
+
 
   /* Responsive Styles for After Hours Section */
   @media (max-width: 768px) {
     .key-image-container {
-      width: 200px;
-      height: auto;
-      position: relative;
-      right: auto;
-      top: auto;
-      bottom: auto;
-      transform: none;
-      margin: var(--spacing-md) auto;
-      display: block;
+      display: none;
     }
 
     .key-image {
-      transform: none;
-      width: 100%;
+      max-width: 300px;
+      max-height: 180px;
     }
 
     .after-hours {
-      min-height: auto;
-      padding: var(--spacing-md) 0;
+      padding: 15px 0;
     }
 
     .after-hours-content {
       flex-direction: column;
+      gap: 15px;
+      padding: 15px 0;
       text-align: center;
-      gap: var(--spacing-md);
-      padding: var(--spacing-lg) var(--spacing-md);
     }
 
     .after-hours-center {
-      flex-direction: column;
       width: 100%;
     }
-
-   
 
     .after-hours-left .highlight-text {
       font-size: 24px;
-      white-space: normal !important;
+    }
+
+    .after-hours-left .campaign-image {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 5px;
     }
 
     .after-hours-center p {
-      max-width: 100%;
+      font-size: 14px;
     }
-    
+
     .campaign-slider {
-      width: 100%;
+      margin: 0 auto;
     }
   }
 
@@ -1438,22 +1456,28 @@
     .after-hours-left h2 {
       font-size: 20px;
     }
-    
+
     .after-hours-left .highlight-text {
       font-size: 20px;
     }
-    
+
+    .after-hours-left .campaign-image {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 5px;
+    }
+
     .after-hours-center p {
-      font-size: 14px;
+      font-size: 12px;
     }
-    
+
     .btn-outline {
-      padding: 10px 20px;
+      padding: 8px 15px;
       font-size: 14px;
     }
-    
+
     .key-image-container {
-      width: 150px;
+      display: none;
     }
   }
 
@@ -3171,7 +3195,7 @@
   }
 
   .consultation-header {
-    background: linear-gradient(135deg, var(--primary-color, #48CAE4) 0%, #3A97DB 100%);
+    background: linear-gradient(135deg, #2b3c93 0%, #7eb53a 100%);
     padding: 35px;
     border-radius: 12px;
     color: #fff;
@@ -3449,20 +3473,6 @@
     position: relative;
   }
 
-  .find-btn {
-    background: linear-gradient(135deg, #FF8A8A 0%, #FF6B6B 100%);
-    color: #fff;
-  }
-
-  .call-btn {
-    background: linear-gradient(135deg, #6D7CD3 0%, #5A66B0 100%);
-    color: #fff;
-  }
-
-  .email-btn {
-    background: linear-gradient(135deg, #5c9ead 0%, #4A8998 100%);
-    color: #fff;
-  }
 
   .contact-btn::before {
     content: '';
@@ -3643,15 +3653,6 @@
     position: relative;
   }
 
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--health-primary), var(--health-secondary), var(--health-accent));
-  }
 
   .footer-top {
     display: grid;
@@ -3673,14 +3674,7 @@
     line-height: 1.6;
   }
 
-  .footer-info .footer-logo {
-    margin-bottom: var(--spacing-md);
-  }
 
-  .footer-info .footer-logo img {
-    max-width: 200px;
-    height: auto;
-  }
 
   .footer-address, 
   .footer-contact, 
@@ -3956,80 +3950,7 @@
     }
   }
 
-  /* Header Stilleri */
-  .top-bar {
-    background-color: var(--health-light);
-    color: var(--text-color);
-    padding: var(--spacing-xs) 0;
-    border-bottom: 1px solid rgba(66, 165, 245, 0.1);
-  }
 
-  .top-bar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .top-bar .logo {
-    display: block;
-    margin-right: var(--spacing-xl);
-  }
-
-  .top-bar .logo img {
-    height: 40px;
-    transition: all var(--transition-normal);
-  }
-
-  .top-bar .logo:hover img {
-    transform: scale(1.35);
-  }
-
-  .contact-info {
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    gap: var(--spacing-lg);
-  }
-
-  .info-item {
-    display: flex;
-    align-items: center;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--border-radius-sm);
-    background-color: var(--white);
-    box-shadow: 0 2px 8px rgba(66, 165, 245, 0.1);
-    transition: all var(--transition-normal);
-    white-space: nowrap;
-  }
-
-  .info-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(66, 165, 245, 0.15);
-  }
-
-  .info-item img {
-    width: 24px;
-    height: 24px;
-    margin-right: var(--spacing-sm);
-  }
-
-  .info-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .info-text .label {
-    font-size: 12px;
-    color: var(--health-primary);
-    font-weight: 500;
-    margin-bottom: 0;
-  }
-
-  .info-text .value {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-color);
-  }
 
   /* Header kısmı */
   .header {
@@ -4226,7 +4147,7 @@
   }
 
   .find-btn {
-    background: linear-gradient(135deg, #FF8A8A 0%, #FF6B6B 100%);
+    background: linear-gradient(135deg, #2b3c93 0%, #7eb53a 100%);
     color: #fff;
   }
 
@@ -4419,16 +4340,8 @@
     position: relative;
   }
 
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--health-primary), var(--health-secondary), var(--health-accent));
-  }
 
+  
   .footer-top {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -4454,7 +4367,7 @@
   }
 
   .footer-info .footer-logo img {
-    max-width: 200px;
+    max-width: 260px;
     height: auto;
   }
 
@@ -4736,7 +4649,7 @@
   .top-bar {
     background-color: var(--health-light);
     color: var(--text-color);
-    padding: var(--spacing-xs) 0;
+    padding: var(--spacing-sm) 0; /* Padding'i azaltıyorum */
     border-bottom: 1px solid rgba(66, 165, 245, 0.1);
   }
 
@@ -4744,27 +4657,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Logo için pozisyon referansı */
   }
 
   .top-bar .logo {
     display: block;
     margin-right: var(--spacing-xl);
+    position: relative; /* Logo konumlandırması için */
+    z-index: 2; /* Logoyu üstte tutmak için */
   }
 
   .top-bar .logo img {
-    height: 40px;
+    height: 100px;
+    width: 200px;
     transition: all var(--transition-normal);
   }
 
   .top-bar .logo:hover img {
-    transform: scale(1.35);
+    transform: scale(1.2); /* Hover efektini azaltıyorum */
   }
 
   .contact-info {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end; /* Sağa hizalama */
     flex: 1;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md); /* Boşlukları azaltıyorum */
+    align-items: center;
   }
 
   .info-item {
@@ -4772,26 +4690,19 @@
     align-items: center;
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-sm);
-    background-color: var(--white);
-    box-shadow: 0 2px 8px rgba(66, 165, 245, 0.1);
-    transition: all var(--transition-normal);
-    white-space: nowrap;
-  }
-
-  .info-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(66, 165, 245, 0.15);
+    min-width: 200px; /* Minimum genişlik */
   }
 
   .info-item img {
-    width: 24px;
+    width: 24px; /* İkon boyutunu sabitliyorum */
     height: 24px;
-    margin-right: var(--spacing-sm);
+    margin-right: var(--spacing-xs);
   }
 
   .info-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   .info-text .label {
@@ -5006,4 +4917,173 @@
 
   
 
+  .after-hours-right {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: relative;
+    z-index: 3;
+    padding: 0 10px;
+  }
+
+  .after-hours-right .campaign-image {
+    display: none; /* Eski görseli gizliyoruz */
+  }
+
+  .health-icon-3d-container {
+    position: absolute;
+    width: 150px;
+    height: 215px;
+    margin-bottom: 0;
+    transform: perspective(800px) rotateY(15deg) rotateX(10deg);
+    transition: transform 0.6s ease;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -117px;
+    left: -170px;
+  }
+
+
+  .health-icon-3d {
+    width: 150%;
+    height: 150%;
+    object-fit: contain;
+    filter: drop-shadow(5px 15px 15px rgba(0, 0, 0, 0.3));
+    transform-style: preserve-3d;
+    animation: float 3s ease-in-out infinite;
+    transition: all 0.5s ease;
+  }
+  
+  .health-icon-3d-container::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 10px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+    bottom: -15px;
+    border-radius: 50%;
+    z-index: -1;
+    animation: shadow 3s ease-in-out infinite;
+  }
+
+
+
+  .after-hours-right .btn {
+    margin-top: 0;
+    position: relative;
+    z-index: 4;
+    font-size: 15px;
+    padding: 8px 18px;
+  }
+  
+  @media (max-width: 768px) {
+    .key-image-container {
+      width: 250px;
+      height: 200px;
+      top: -15%;
+    }
+    
+    .key-image {
+      width: 100%;
+    }
+    
+    .after-hours {
+      padding: 40px 0;
+    }
+    
+    .after-hours-content {
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .after-hours-center {
+      order: 1;
+    }
+    
+    .after-hours-left .highlight-text {
+      font-size: 24px;
+    }
+    
+    .after-hours-left .campaign-image {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .after-hours-center p {
+      font-size: 14px;
+    }
+    
+    .campaign-slider {
+      margin-top: 20px;
+    }
+    
+    .health-icon-3d-container {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 5px;
+    }
+    
+    .after-hours-right {
+      flex-direction: row;
+      justify-content: center;
+      gap: 30px;
+      padding: 0;
+    }
+    
+    .after-hours-right .btn {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .after-hours-left h2 {
+      font-size: 20px;
+    }
+    
+    .after-hours-left .highlight-text {
+      font-size: 20px;
+    }
+    
+    .after-hours-left .campaign-image {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .after-hours-center p {
+      font-size: 12px;
+    }
+    
+    .btn-outline {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+    
+    .key-image-container {
+      width: 200px;
+      height: 150px;
+    }
+    
+    .health-icon-3d-container {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .after-hours-right {
+      flex-direction: row;
+      gap: 15px;
+      padding: 0;
+    }
+    
+    .after-hours-right .btn {
+      font-size: 13px;
+      padding: 7px 14px;
+    }
+  }
   
