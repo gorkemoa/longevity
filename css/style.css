@@ -123,6 +123,14 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
+    -webkit-overflow-scrolling: touch; /* iOS'ta kaydırma hareketlerini iyileştirir */
+    touch-action: pan-y; /* Dikey kaydırmaya izin verir, yatay kaydırmayı engeller */
+    /* Slider için performans optimizasyonları */
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
   
   .hero-slide {
@@ -134,11 +142,17 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
+    will-change: opacity; /* Tarayıcıya geçiş efektlerini optimize etmesi gerektiğini bildirir */
+    /* Arka plan görüntüsü optimizasyonu */
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   .hero-slide.active {
     opacity: 1;
+    z-index: 1;
   }
   
   .hero-slide::before {
@@ -3989,7 +4003,7 @@
     transition: all var(--transition-normal);
   }
 
- 
+
 
   /* Arama kutusu */
   .search-box {
@@ -4974,7 +4988,7 @@
     
     .after-hours-content {
       flex-direction: column;
-      gap: 30px;
+      gap: 8px;
       text-align: center;
     }
     
@@ -5105,5 +5119,693 @@
   
   .social-icons a {
     text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-slider {
+      height: 80vh;
+    }
+    
+    .hero-content {
+      width: 100%;
+      padding: 0 20px;
+    }
+    
+    .hero-content h1 {
+      font-size: 2rem;
+      text-align: center;
+    }
+    
+    .hero-content .price {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    .hero-content p {
+      font-size: 1rem;
+      max-width: 100%;
+      text-align: center;
+    }
+    
+    .hero-content .view-more {
+      margin: 0 auto;
+      display: block;
+      width: fit-content;
+    }
+    
+    .slider-nav {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+    
+    .top-bar-content {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .top-bar .logo img {
+      height: 100px;
+      margin: 0 auto;
+      display: block;
+    }
+    
+    .contact-info {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .info-item {
+      flex-basis: 48%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .hero-slider {
+      height: 70vh;
+    }
+    
+    .hero-content h1 {
+      font-size: 1.75rem;
+    }
+    
+    .hero-content .price {
+      font-size: 1.25rem;
+    }
+    
+    .hero-content p {
+      font-size: 0.9rem;
+    }
+    
+    .hero-content .view-more {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+    
+    .slider-nav {
+      width: 36px;
+      height: 36px;
+      font-size: 12px;
+    }
+    
+    .info-item {
+      flex-basis: 100%;
+    }
+  }
+  
+  /* Mobil Menü Stilleri */
+  .mobile-search {
+    padding: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+
+  .mobile-search .search-box {
+    width: 100%;
+    display: flex;
+  }
+
+  .mobile-search .search-box input {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+  }
+
+  .mobile-search .search-box button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+
+  .mobile-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+
+  .mobile-social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--light-gray);
+    border-radius: 50%;
+    color: var(--text-color);
+    transition: var(--transition-fast);
+    text-decoration: none !important;
+    border: none;
+    outline: none;
+  }
+
+  .mobile-social-icons a:hover,
+  .mobile-social-icons a:focus,
+  .mobile-social-icons a:active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none !important;
+    border: none;
+    outline: none;
+  }
+
+  .mobile-social-icons a i {
+    font-size: 16px;
+  }
+
+  /* Genel bağlantılar için alt çizgi kaldırma */
+  a {
+    text-decoration: none;
+  }
+
+  /* Header içindeki tüm bağlantılar ve sosyal medya ikonları */
+  header a,
+  .social-icons a,
+  .header-logo,
+  .mobile-menu-button,
+  .mobile-menu-close {
+    text-decoration: none;
+    border-bottom: none;
+    outline: none;
+  }
+
+  /* Mobil menüye özel bazı düzeltmeler */
+  @media (max-width: 992px) {
+    .mobile-menu-button {
+      display: block !important;
+      background: none;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      z-index: 100;
+    }
+    
+    .mobile-menu-button i {
+      font-size: 24px;
+      color: var(--primary-color);
+    }
+    
+    .mobile-menu {
+      height: 100vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .mobile-menu.active {
+      right: 0 !important;
+    }
+    
+    .header-container {
+      padding: 5px 0;
+    }
+  }
+
+  /* Mobil header logo stilleri */
+  .header-logo {
+    text-decoration: none;
+  }
+
+  .mobile-header-logo {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-menu-button i {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .mobile-menu-button i {
+      font-size: 20px;
+    }
+    
+    .mobile-menu-button {
+      padding: 6px;
+    }
+  }
+  
+  /* Slider için dokunmatik özelleştirmeler */
+  @media (pointer: coarse) {
+    .slider-nav {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .hero-content .view-more {
+      padding: 12px 24px;
+      font-size: 16px;
+    }
+  }
+
+  /* Mobil optimizasyon için meta viewport eklendiğinden emin ol */
+  @media screen and (max-width: 320px) {
+    .hero-content h1 {
+      font-size: 1.5rem;
+    }
+    
+    .hero-content .price {
+      font-size: 1.1rem;
+    }
+    
+    .hero-content p {
+      font-size: 0.85rem;
+    }
+    
+    .hero-content .view-more {
+      padding: 8px 14px;
+      font-size: 0.85rem;
+    }
+    
+    .slider-nav {
+      width: 32px;
+      height: 32px;
+      font-size: 10px;
+    }
+  }
+  
+  /* Mobil menü stilleri */
+  .mobile-logo {
+    width: 150px;
+    height: auto;
+  }
+
+  .mobile-logo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 40px;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 576px) {
+    .mobile-logo img {
+      max-height: 35px;
+    }
+  }
+  
+  /* İkonları içeren tüm bağlantıların altı çizili olmaması için */
+  .social-icons a,
+  .mobile-social-icons a,
+  a.header-logo,
+  .header a,
+  .mobile-menu a,
+  a[href] i.fa,
+  a[href] i.fas,
+  a[href] i.fab {
+    text-decoration: none !important;
+  }
+
+  /* Mobil menüdeki linkler için de çizgi olmaması */
+  .mobile-menu-nav .nav-link {
+    text-decoration: none !important;
+  }
+
+  /* Tüm ikonlar için genel stil */
+  i.fa, i.fas, i.fab {
+    display: inline-block;
+  }
+  
+  /* Genel stiller resetleme - alt çizgi olmaması için */
+  a, a:hover, a:focus, a:active {
+    text-decoration: none;
+  }
+
+  a i, button i {
+    text-decoration: none;
+  }
+
+  /* Sosyal medya ikonları için özel reset */
+  .social-icons a, 
+  .mobile-social-icons a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-slider {
+      height: 80vh;
+      max-height: 700px; /* Yüksekliği sınırlamak ekran oranları arasında daha tutarlı görünüm sağlar */
+    }
+    
+    .hero-content {
+      width: 100%;
+      padding: 0 20px;
+      max-width: 100%;
+      bottom: 10%; /* Mobil görünümde içeriğin daha aşağıda olmasını sağlar */
+    }
+    
+    .hero-content h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    .hero-content .price {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    .hero-content p {
+      font-size: 1rem;
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .hero-content .view-more {
+      margin: 0 auto;
+      display: block;
+      width: fit-content;
+      min-width: 140px; /* Dokunma hedefi olarak minimum genişlik sağlar */
+      text-align: center;
+    }
+    
+    .slider-nav {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+      opacity: 0.8; /* Hafif şeffaflık ekleyerek arka plandan ayırır */
+      z-index: 5; /* Üstte kaldığından emin olmak için z-index eklendi */
+    }
+    
+  }
+
+  @media (max-width: 576px) {
+    .hero-slider {
+      height: 70vh;
+      max-height: 600px;
+    }
+    
+    .hero-slide {
+      background-position: 60% center; /* Mobil görünümde arka plan görselinin daha iyi hizalanması */
+    }
+    
+    .hero-content h1 {
+      font-size: 1.75rem;
+    }
+    
+    .hero-content .price {
+      font-size: 1.25rem;
+    }
+    
+    .hero-content p {
+      font-size: 0.9rem;
+    }
+    
+    .hero-content .view-more {
+      padding: 10px 18px; /* Dokunma hedefi olarak biraz daha büyük */
+      font-size: 0.9rem;
+    }
+    
+    .slider-nav {
+      width: 36px;
+      height: 36px;
+      font-size: 12px;
+      bottom: auto;
+      top: 50%; /* Okları ortaya yerleştirerek erişilebilirliği artırır */
+      transform: translateY(-50%);
+    }
+    
+    .slider-nav.prev {
+      left: 10px;
+    }
+    
+    .slider-nav.next {
+      right: 10px;
+    }
+    
+  }
+
+  @media screen and (max-width: 320px) {
+    .hero-slider {
+      height: 60vh;
+      max-height: 500px;
+    }
+    
+    .hero-content h1 {
+      font-size: 1.5rem;
+    }
+    
+    .hero-content .price {
+      font-size: 1.1rem;
+    }
+    
+    .hero-content p {
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    
+    .hero-content .view-more {
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      min-width: 120px;
+    }
+    
+    .slider-nav {
+      width: 32px;
+      height: 32px;
+      font-size: 10px;
+    }
+    
+    .slider-nav.prev {
+      margin-left: -60px; /* Daha küçük ekranlarda mesafeyi azalt */
+    }
+    
+    .slider-nav.next {
+      margin-right: -60px; /* Daha küçük ekranlarda mesafeyi azalt */
+    }
+  }
+  
+  /* Yeni eklemeler */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .hero-slider {
+      height: 100vh; /* Yatay modda tam yükseklik */
+    }
+    
+    .hero-content {
+      padding-bottom: 40px;
+    }
+    
+    .hero-content h1, 
+    .hero-content .price {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+    
+    .hero-content p {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Mobil menü stilleri */
+  .mobile-logo {
+    width: 150px;
+    height: auto;
+  }
+
+  .mobile-logo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 40px;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 576px) {
+    .mobile-logo img {
+      max-height: 35px;
+    }
+  }
+  
+  /* İkonları içeren tüm bağlantıların altı çizili olmaması için */
+  .social-icons a,
+  .mobile-social-icons a,
+  a.header-logo,
+  .header a,
+  .mobile-menu a,
+  a[href] i.fa,
+  a[href] i.fas,
+  a[href] i.fab {
+    text-decoration: none !important;
+  }
+
+  /* Mobil menüdeki linkler için de çizgi olmaması */
+  .mobile-menu-nav .nav-link {
+    text-decoration: none !important;
+  }
+
+  /* Tüm ikonlar için genel stil */
+  i.fa, i.fas, i.fab {
+    display: inline-block;
+  }
+  
+  /* Genel stiller resetleme - alt çizgi olmaması için */
+  a, a:hover, a:focus, a:active {
+    text-decoration: none;
+  }
+
+  a i, button i {
+    text-decoration: none;
+  }
+
+  /* Sosyal medya ikonları için özel reset */
+  .social-icons a, 
+  .mobile-social-icons a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+  
+  @media (max-width: 576px) {
+    .hero-slider {
+      height: 70vh;
+      max-height: 300px;
+    }
+    
+    .hero-slide {
+      background-position: 60% center; /* Mobil görünümde arka plan görselinin daha iyi hizalanması */
+    }
+    
+    .hero-content h1 {
+      font-size: 1.75rem;
+    }
+    
+    .hero-content .price {
+      font-size: 1.25rem;
+    }
+    
+    .hero-content p {
+      font-size: 0.9rem;
+    }
+    
+    .hero-content .view-more {
+      padding: 10px 18px; /* Dokunma hedefi olarak biraz daha büyük */
+      font-size: 0.9rem;
+    }
+    
+    .slider-nav {
+      width: 36px;
+      height: 36px;
+      font-size: 12px;
+      bottom: auto;
+      top: 50%; /* Okları dikey ortalama */
+      transform: translateY(-50%);
+      opacity: 0.85;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .slider-nav.prev {
+      left: 0;
+      margin-left: 0;
+      border-radius: 0 4px 4px 0;
+      border-left: none;
+    }
+    
+    .slider-nav.next {
+      right: 0;
+      margin-right: 0;
+      border-radius: 4px 0 0 4px;
+      border-right: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .slider-nav {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+      opacity: 0.9;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      z-index: 5;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .slider-nav.prev {
+      left: 0;
+      border-radius: 0 4px 4px 0;
+      border-left: none;
+    }
+    
+    .slider-nav.next {
+      right: 0;
+      border-radius: 4px 0 0 4px;
+      border-right: none;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .hero-slider {
+      height: 70vh;
+      max-height: 300px;
+    }
+    
+    .hero-slide {
+      background-position: 60% center; /* Mobil görünümde arka plan görselinin daha iyi hizalanması */
+    }
+    
+    .hero-content h1 {
+      font-size: 1.75rem;
+    }
+    
+    .hero-content .price {
+      font-size: 1.25rem;
+    }
+    
+    .hero-content p {
+      font-size: 0.9rem;
+    }
+    
+    .hero-content .view-more {
+      padding: 10px 18px; /* Dokunma hedefi olarak biraz daha büyük */
+      font-size: 0.9rem;
+    }
+    
+    .slider-nav {
+      width: 32px;
+      height: 42px;
+      font-size: 12px;
+      opacity: 0.85;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .slider-nav.prev {
+      left: 0;
+      border-radius: 0 4px 4px 0;
+      border-left: none;
+    }
+    
+    .slider-nav.next {
+      right: 0;
+      border-radius: 4px 0 0 4px;
+      border-right: none;
+    }
   }
   

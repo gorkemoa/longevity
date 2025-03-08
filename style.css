@@ -637,6 +637,23 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
   
+  .clinic-image-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .clinic-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition-normal);
+  }
+  
+  .clinic-image:hover {
+    transform: scale(1.03);
+  }
+  
   .features-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -655,37 +672,49 @@
   
   .feature-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   }
   
   .feature-icon {
-    font-size: 32px;
-    color: var(--primary-color);
+    font-size: 36px;
+    color: var(--health-primary);
     margin-bottom: var(--spacing-sm);
   }
   
+  .feature-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .feature-item h3 {
-    font-size: 16px;
-    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 700;
     margin-bottom: var(--spacing-xs);
-    font-weight: 600;
+    color: var(--secondary-color);
   }
   
   .feature-item p {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-color);
     opacity: 0.8;
+    line-height: 1.4;
   }
   
   /* Responsive Styles for About Section */
   @media (max-width: 992px) {
     .about-content {
       flex-direction: column;
+      gap: var(--spacing-lg);
     }
   
     .about-left,
     .about-right {
       width: 100%;
+    }
+    
+    .about-right {
+      margin-top: var(--spacing-md);
     }
   
     .features-grid {
@@ -695,6 +724,14 @@
   }
   
   @media (max-width: 768px) {
+    .about-section {
+      padding: var(--spacing-lg) 0;
+    }
+    
+    .about-content {
+      margin-bottom: var(--spacing-lg);
+    }
+    
     .about-number {
       font-size: 48px;
     }
@@ -702,19 +739,59 @@
     .about-subtitle {
       font-size: 18px;
     }
+    
+    .about-description {
+      font-size: 15px;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .about-right img {
+      border-radius: 8px;
+    }
   
     .features-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .feature-item {
+      padding: var(--spacing-sm);
+    }
+    
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .feature-item h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    
+    .feature-item p {
+      font-size: 14px;
     }
   }
   
   @media (max-width: 576px) {
+    .about-section {
+      padding: var(--spacing-md) 0;
+    }
+    
+    .about-content {
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+    
     .features-grid {
       grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
     }
   
     .about-title {
       font-size: 20px;
+      margin-bottom: var(--spacing-sm);
     }
   
     .about-number {
@@ -723,6 +800,25 @@
   
     .about-subtitle {
       font-size: 16px;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .feature-icon {
+      margin-right: var(--spacing-sm);
+      margin-bottom: 0;
+      font-size: 26px;
+      min-width: 40px;
+    }
+    
+    .feature-content {
+      align-items: flex-start;
     }
   }
   

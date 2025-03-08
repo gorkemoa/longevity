@@ -81,3 +81,115 @@
       </div>
     </div>
   </footer> 
+
+<!-- Footer için mobil uyumluluk stilleri -->
+<style>
+  /* Masaüstü görünümü korunacak */
+  @media (max-width: 992px) {
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+  
+  /* Tablet ve mobil cihazlar için */
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+    
+    .footer-info {
+      text-align: center;
+    }
+    
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    
+    .footer-logo img {
+      max-width: 200px;
+    }
+    
+    .health-icons {
+      justify-content: center;
+      margin-top: 15px;
+    }
+    
+    .footer-posts .post-item {
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+    
+    .footer-bottom .footer-links {
+      justify-content: center;
+    }
+  }
+  
+  /* Küçük mobil cihazlar için */
+  @media (max-width: 576px) {
+    .footer-logo img {
+      max-width: 180px;
+    }
+    
+    .footer-info p {
+      font-size: 14px;
+    }
+    
+    .footer h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    
+    .footer-links ul li {
+      margin-bottom: 8px;
+    }
+    
+    .footer-links ul li a {
+      font-size: 14px;
+    }
+    
+    .post-item {
+      margin-bottom: 12px;
+    }
+    
+    .post-content a {
+      font-size: 14px;
+    }
+    
+    .post-content span {
+      font-size: 12px;
+    }
+    
+    .newsletter-form input {
+      padding: 10px;
+      font-size: 14px;
+    }
+    
+    .subscribe-btn {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+    
+    .footer-bottom p, 
+    .footer-bottom .footer-links a {
+      font-size: 12px;
+    }
+    
+    .footer-bottom .footer-links {
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+  }
+</style> 

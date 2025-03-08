@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Dr. Apak's Longevity ve Getat</title>
   
   <!-- Fonts -->
@@ -77,6 +77,45 @@
     .detail-link:hover i {
       transform: translateX(5px);
     }
+
+    /* Mobil optimizasyon için yeni stiller */
+    @media screen and (max-width: 768px) {
+      .search-card {
+        flex-direction: column;
+      }
+      
+      .card-content {
+        width: 100%;
+        padding: 20px;
+      }
+      
+      .card-images,
+      .search-card .card-images {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        pointer-events: none !important;
+      }
+      
+      .search-button {
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .search-card {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .search-card .card-content {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <div id="header-container"></div>
@@ -86,7 +125,7 @@
 
   <!-- Hero Section -->
   <section class="hero-slider">
-    <div class="hero-slide" style="background-image: url('https://www.longevity-v1.posttasarim.com/wp-content/uploads/2025/03/aging-science-neuroscience.webp')">
+    <div class="hero-slide" style="background-image: url('https://www.longevity-v1.posttasarim.com/wp-content/uploads/2025/03/aging-science-neuroscience.webp')" data-img-src="https://www.longevity-v1.posttasarim.com/wp-content/uploads/2025/03/aging-science-neuroscience.webp" aria-label="Dr. Apak's Longevity Slider">
       <div class="container">
         <div class="hero-content">
           <h1>Dr. Apak's Longevity ve Getat</h1>
@@ -96,7 +135,7 @@
         </div>
       </div>
     </div>
-    <div class="hero-slide" style="background-image: url('https://www.longevity-v1.posttasarim.com/wp-content/uploads/2025/03/stops-aging.webp')">
+    <div class="hero-slide" style="background-image: url('https://www.longevity-v1.posttasarim.com/wp-content/uploads/2025/03/stops-aging.webp')" data-img-src="https://www.longevity-v1.posttasarim.com/wp-content/uploads/2025/03/stops-aging.webp" aria-label="Sağlıklı Yaşam Slider">
       <div class="container">
         <div class="hero-content">
           <h1>Sağlıklı Yaşamın Sırrı</h1>
@@ -106,8 +145,8 @@
         </div>
       </div>
     </div>
-    <button class="slider-nav prev"><i class="fas fa-chevron-left"></i></button>
-    <button class="slider-nav next"><i class="fas fa-chevron-right"></i></button>
+    <button class="slider-nav prev" aria-label="Önceki Slayt"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-nav next" aria-label="Sonraki Slayt"><i class="fas fa-chevron-right"></i></button>
   </section>
 
   <section class="after-hours">
@@ -115,7 +154,7 @@
       <div class="after-hours-content">
         <div class="after-hours-left">
           <h2>KAMPANYALAR</h2>
-          <div class="highlight-text" style="white-space: nowrap; font-size: 18px;">Longevity Klinik</div>
+          <div class="highlight-text">Longevity Klinik</div>
         </div>
         <div class="after-hours-center">
           <div class="campaign-slider">
@@ -125,6 +164,32 @@
             <p class="campaign-slide fade">Online konsültasyonlarda %15 indirim.</p>
         </div>
           <style>
+            .after-hours-content {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            
+            .after-hours-left {
+              flex: 0 0 25%;
+            }
+            
+            .after-hours-center {
+              flex: 0 0 50%;
+            }
+            
+            .after-hours-right {
+              flex: 0 0 25%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+            
+            .highlight-text {
+              white-space: nowrap;
+              font-size: 18px;
+            }
+            
             .campaign-slider {
               position: relative;
               width: 100%;
@@ -132,6 +197,7 @@
               margin: 0;
               padding: 0;
             }
+            
             .campaign-slide {
               display: none;
               animation: fade 2s ease-in-out infinite;
@@ -142,21 +208,52 @@
               color: #2c3e50;
               font-weight: 500;
             }
+            
             .fade {
               animation: fade 2s ease-in-out infinite;
             }
+            
             @keyframes fade {
               0%, 100% { opacity: 0; }
               50% { opacity: 1; }
             }
+            
             .campaign-slide:first-child {
               display: block;
             }
             
+            .health-icon-3d {
+              max-width: 150%;
+              height: auto;
+            }
+            
             @media (max-width: 768px) {
+              .after-hours-content {
+                flex-direction: column;
+                text-align: center;
+              }
+              
+              .after-hours-left, 
+              .after-hours-center, 
+              .after-hours-right {
+                width: 100%;
+                flex: 0 0 100%;
+                margin-bottom: 15px;
+              }
+              
+              .highlight-text {
+                white-space: normal;
+              }
+              
               .campaign-slide {
                 font-size: 14px;
                 padding: 8px;
+              }
+              
+              .btn {
+                display: block;
+                width: 100%;
+                margin-top: 15px;
               }
             }
             
@@ -164,6 +261,10 @@
               .campaign-slide {
                 font-size: 12px;
                 padding: 6px;
+              }
+              
+              .highlight-text {
+                font-size: 16px;
               }
             }
           </style>
@@ -204,7 +305,7 @@
           </p>
         </div>
         <div class="about-right">
-          <div class="cars-image">
+          <div class="clinic-image-container">
             <img src="https://www.arkitera.com/wp-content/uploads/2020/09/slasharchitects-Clinic-29-07-1024x683.jpg" alt="Modern Klinik" class="clinic-image">
           </div>
         </div>
@@ -213,23 +314,31 @@
       <div class="features-grid">
         <div class="feature-item">
           <i class="fas fa-user-md feature-icon"></i>
-          <h3>UZMAN KADRO</h3>
-          <p>Deneyimli uzman hekimler</p>
+          <div class="feature-content">
+            <h3>UZMAN KADRO</h3>
+            <p>Deneyimli uzman hekimler</p>
+          </div>
         </div>
         <div class="feature-item">
           <i class="fas fa-headset feature-icon"></i>
-          <h3>7/24 HİZMET</h3>
-          <p>Kesintisiz sağlık hizmeti</p>
+          <div class="feature-content">
+            <h3>7/24 HİZMET</h3>
+            <p>Kesintisiz sağlık hizmeti</p>
+          </div>
         </div>
         <div class="feature-item">
           <i class="fas fa-hospital-alt feature-icon"></i>
-          <h3>MODERN TESİS</h3>
-          <p>Son teknoloji ekipmanlar</p>
+          <div class="feature-content">
+            <h3>MODERN TESİS</h3>
+            <p>Son teknoloji ekipmanlar</p>
+          </div>
         </div>
         <div class="feature-item">
           <i class="fas fa-heart feature-icon"></i>
-          <h3>KALİTELİ HİZMET</h3>
-          <p>Hasta memnuniyeti odaklı</p>
+          <div class="feature-content">
+            <h3>KALİTELİ HİZMET</h3>
+            <p>Hasta memnuniyeti odaklı</p>
+          </div>
         </div>
       </div>
     </div>
@@ -596,14 +705,11 @@
     <div class="container">
       <h2 class="section-title">DANIŞANLARIMIZ NE DİYOR?</h2>
     <div class="container">
-
-
-
       <div class="cards-grid">
         <div class="search-card search-card-orange">
           <div class="card-content">
             <h2>Detaylı Bilgiye İhtiyacım Var</h2>
-            <p>Uzman ekibimizle size en iyi teklifleri sunuyoruz.Sizin için en iyi araba seçeneklerini bulup size sunuyoruz.</p>
+            <p>Uzman ekibimizle size en iyi teklifleri sunuyoruz.Sizin için en iyi tedavi seçeneklerini bulup size sunuyoruz.</p>
             <a href="detailed-info.html" class="search-button" style="background-color:var(--secondary-color);">
 Bize Ulaşın 
              <i class="fas fa-search"></i>
@@ -623,7 +729,7 @@ Bize Ulaşın
             </a>
           </div>
           <div class="card-images">
-            <img src="https://i0.wp.com/doktordanhaberler.com/wp-content/uploads/2024/01/doktordanhaberler-anasayfa-doktor.png?resize=451%2C642&ssl=1" alt="BMW" class="car-image">
+            <img src="https://i0.wp.com/doktordanhaberler.com/wp-content/uploads/2024/01/doktordanhaberler-anasayfa-doktor.png?resize=451%2C642&ssl=1" alt="BMW" class="car-image" loading="lazy">
           </div>
         </div>
       </div>
@@ -918,19 +1024,6 @@ Bize Ulaşın
   <script src="assets/js/main.js"></script>
   <script src="assets/js/testimonials.js"></script>
   <script>
-    // Load components
-    fetch('components/header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      });
-
-    fetch('components/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
-      
     // Yukarı çık butonu fonksiyonları
     document.addEventListener('DOMContentLoaded', function() {
       const scrollToTopBtn = document.querySelector('.scroll-to-top');
@@ -951,56 +1044,6 @@ Bize Ulaşın
           behavior: 'smooth'
         });
       });
-      
-      // Mobil uyumluluğu arttırmak için ekstra fonksiyonlar
-      const sliders = document.querySelectorAll('.campaign-cars-slider');
-      
-      sliders.forEach(slider => {
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        
-        slider.addEventListener('touchstart', (e) => {
-          isDown = true;
-          startX = e.touches[0].pageX - slider.offsetLeft;
-          scrollLeft = slider.scrollLeft;
-        });
-        
-        slider.addEventListener('touchend', () => {
-          isDown = false;
-        });
-        
-        slider.addEventListener('touchcancel', () => {
-          isDown = false;
-        });
-        
-        slider.addEventListener('touchmove', (e) => {
-          if(!isDown) return;
-          e.preventDefault();
-          const x = e.touches[0].pageX - slider.offsetLeft;
-          const walk = (x - startX) * 1.5; // Hız çarpanı
-          slider.scrollLeft = scrollLeft - walk;
-        }, { passive: false });
-      });
-      
-      // Sayfanın responsive durumunu kontrol etme
-      function checkResponsive() {
-        if (window.innerWidth <= 768) {
-          // Mobil görünüm için ek düzenlemeler
-          document.querySelectorAll('.search-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-              if (e.target.tagName !== 'A') {
-                const link = this.querySelector('a');
-                if (link) link.click();
-              }
-            });
-          });
-        }
-      }
-      
-      // Sayfa yüklendiğinde ve boyutu değiştiğinde kontrol et
-      checkResponsive();
-      window.addEventListener('resize', checkResponsive);
     });
   </script>
 
@@ -1284,6 +1327,92 @@ Bize Ulaşın
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
   }
+  
+  /* Tablet için responsive düzenleme */
+  @media (max-width: 992px) {
+    .vertical-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+  
+  /* Mobil için responsive düzenleme */
+  @media (max-width: 576px) {
+    .vertical-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    
+    .service-card {
+      max-width: 100%;
+      margin: 0 auto 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    
+    .service-image {
+      height: 220px; /* Mobilde görsel yüksekliğini sabitlemek için */
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .service-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .service-card:hover .service-image img {
+      transform: scale(1.05);
+    }
+    
+    .service-content {
+      padding: 16px;
+      text-align: center;
+    }
+    
+    .service-content h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .service-content p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #666;
+      margin-bottom: 15px;
+    }
+    
+    .detail-link-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .detail-link {
+      width: 100%;
+      padding: 10px 16px;
+      font-size: 14px;
+      text-align: center;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    
+    .detail-link:hover {
+      background-color: #0056b3;
+    }
+    
+    .detail-link i {
+      margin-left: 8px;
+    }
+  }
   </style>
 
   <!-- Hizmetler JavaScript - Kart Yüksekliklerini Eşitleme -->
@@ -1535,10 +1664,26 @@ Bize Ulaşın
       .faq-content,
       .video-content {
         max-width: 100%;
+        width: 100%;
+      }
+      
+      .video-content {
+        margin-top: 30px;
+        display: block;
+      }
+      
+      .video-wrapper {
+        padding-top: 56.25%;
+        width: 100%;
+        display: block;
       }
     }
 
     @media (max-width: 768px) {
+      .faq-section {
+        padding: 60px 0;
+      }
+
       .faq-question h3 {
         font-size: 16px;
       }
@@ -1550,6 +1695,102 @@ Bize Ulaşın
 
       .play-button i {
         font-size: 24px;
+      }
+      
+      .faq-video-container {
+        gap: 30px;
+      }
+      
+      .laptop-image {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      .video-content {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-top: 20px;
+        height: auto;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .faq-section {
+        padding: 40px 0;
+      }
+      
+      .faq-question {
+        padding: 15px;
+      }
+      
+      .faq-question h3 {
+        font-size: 15px;
+        line-height: 1.4;
+        flex: 1;
+        padding-right: 10px;
+      }
+      
+      .faq-icon {
+        min-width: 20px;
+        height: 20px;
+      }
+      
+      .faq-answer {
+        padding: 0 15px;
+      }
+      
+      .faq-item.active .faq-answer {
+        padding: 15px;
+      }
+      
+      .faq-item {
+        margin-bottom: 10px;
+      }
+      
+      .play-button {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .play-button i {
+        font-size: 20px;
+      }
+      
+      .video-wrapper {
+        margin-top: 10px;
+        display: block;
+        width: 100%;
+      }
+      
+      .video-content {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+      }
+      
+      .laptop-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block !important;
+      }
+    }
+    
+    /* Dokunmatik cihazlar için iyileştirmeler */
+    @media (pointer: coarse) {
+      .faq-question {
+        min-height: 44px; /* Dokunmatik hedefler için Apple tavsiyesi */
+      }
+      
+      .play-button {
+        min-width: 50px;
+        min-height: 50px;
       }
     }
   </style>
@@ -1615,6 +1856,181 @@ Bize Ulaşın
     }
   </style>
 
+  <style>
+  /* Mobil cihazlar için genel düzenlemeler */
+  @media (max-width: 768px) {
+    /* Hero Section düzenlemeleri */
+    .hero-content h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .hero-content .price {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .hero-content p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .view-more {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+    
+    /* Hizmet kartları düzenlemeleri */
+    .service-category {
+      margin-bottom: 40px;
+    }
+    
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    /* Kart yüksekliklerini mobilde eşit tutma */
+    .service-card {
+      height: auto !important;
+    }
+    
+    .service-content h4 {
+      height: auto !important;
+      margin-bottom: 10px;
+    }
+    
+    .service-content p {
+      height: auto !important;
+      margin-bottom: 15px;
+    }
+    
+    /* Yatay kaydırma iyileştirmeleri */
+    .horizontal-scroll {
+      -webkit-overflow-scrolling: touch;
+      /* Kaydırma çubuğunu gizle ama işlevselliği koru */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  /* Küçük mobil cihazlar için ek düzenlemeler */
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 22px;
+    }
+    
+    .hero-content .price {
+      font-size: 14px;
+    }
+    
+    .service-content h4 {
+      font-size: 16px;
+    }
+    
+    .service-content p {
+      font-size: 13px;
+    }
+    
+    .detail-link {
+      font-size: 13px;
+      padding: 6px 12px;
+    }
+  }
+  </style>
+  
+  <script>
+    // Mobil cihazlar için touch desteği
+    document.addEventListener('DOMContentLoaded', function() {
+      // Yatay kaydırma için touch desteği
+      const horizontalScrollContainers = document.querySelectorAll('.horizontal-scroll');
+      
+      horizontalScrollContainers.forEach(container => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        container.addEventListener('touchstart', (e) => {
+          isDown = true;
+          startX = e.touches[0].pageX - container.offsetLeft;
+          scrollLeft = container.scrollLeft;
+        }, {passive: true});
+        
+        container.addEventListener('touchend', () => {
+          isDown = false;
+        }, {passive: true});
+        
+        container.addEventListener('touchcancel', () => {
+          isDown = false;
+        }, {passive: true});
+        
+        container.addEventListener('touchmove', (e) => {
+          if(!isDown) return;
+          e.preventDefault();
+          const x = e.touches[0].pageX - container.offsetLeft;
+          const walk = (x - startX) * 1.5; // Kaydırma hızı
+          container.scrollLeft = scrollLeft - walk;
+        }, {passive: false});
+      });
+    });
+  </script>
+
+  <!-- Mobil Optimizasyon Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobil cihaz kontrolü
+      const isMobile = window.innerWidth <= 768;
+      
+      if (isMobile) {
+        // Görselleri daha verimli yükleme
+        const lazyImages = document.querySelectorAll('img[src]');
+        
+        // Intersection Observer ile görselleri gözlemleme
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.getAttribute('src');
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '50px 0px',
+          threshold: 0.01
+        });
+        
+        lazyImages.forEach(img => {
+          imageObserver.observe(img);
+        });
+        
+        // Dokunma olaylarını iyileştirme
+        document.querySelectorAll('a, button, .detail-link, .service-card').forEach(element => {
+          element.addEventListener('touchstart', function() {}, {passive: true});
+        });
+        
+        // Mobil menü iyileştirmeleri
+        document.querySelectorAll('.service-card').forEach(card => {
+          card.addEventListener('click', function(event) {
+            const link = this.querySelector('.detail-link');
+            if (link && !event.target.closest('.detail-link')) {
+              link.click();
+            }
+          });
+        });
+        
+        // Responsive davranışı iyileştirme
+        window.addEventListener('resize', function() {
+          // Daha düzgün kaydırma için
+          window.scrollTo(0, window.scrollY + 1);
+          window.scrollTo(0, window.scrollY - 1);
+        }, {passive: true});
+      }
+    });
+  </script>
 
 </body>
 </html> 

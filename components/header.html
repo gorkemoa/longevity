@@ -36,6 +36,10 @@
 <header class="header">
     <div class="container">
         <div class="header-container">
+            <a href="/" class="header-logo">
+                <img src="logo.png" alt="Longevity Klinik Logo" class="mobile-header-logo">
+            </a>
+            
             <nav class="nav-menu">
                 <ul class="menu-slider">
                     <li><a href="/" class="nav-link active">ANASAYFA</a></li>
@@ -57,11 +61,85 @@
                 <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
+            <button class="mobile-menu-button" onclick="openMobileMenuManual()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </div>
 </header>
 
+<!-- Mobil Menü -->
+<div class="mobile-menu-overlay"></div>
+<div class="mobile-menu">
+    <div class="mobile-menu-header">
+        <div class="mobile-logo">
+            <img src="logo.png" alt="Longevity Klinik Logo" height="40">
+        </div>
+        <button class="mobile-menu-close" onclick="closeMobileMenuManual()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <nav class="mobile-menu-nav">
+        <ul>
+            <li><a href="/" class="nav-link active" style="text-decoration: none;">ANASAYFA</a></li>
+            <li><a href="/hakkimizda" class="nav-link" style="text-decoration: none;">HAKKIMIZDA</a></li>
+            <li><a href="/hizmetlerimiz" class="nav-link" style="text-decoration: none;">HİZMETLERİMİZ</a></li>
+            <li><a href="/doktorlarimiz" class="nav-link" style="text-decoration: none;">DOKTORLARIMIZ</a></li>
+            <li><a href="/blog" class="nav-link" style="text-decoration: none;">BLOG</a></li>
+            <li><a href="/iletisim" class="nav-link" style="text-decoration: none;">İLETİŞİM</a></li>
+        </ul>
+    </nav>
+    <div class="mobile-search">
+        <div class="search-box">
+            <input type="text" placeholder="Arama yapın...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="mobile-social-icons">
+        <a href="#" title="Facebook" style="text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Instagram" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="Twitter" style="text-decoration: none;"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="YouTube" style="text-decoration: none;"><i class="fab fa-youtube"></i></a>
+    </div>
+</div>
+
 <script>
+// Global fonksiyonlar (doğrudan HTML'den erişilebilir)
+function openMobileMenuManual() {
+    console.log('Mobil menü manuel olarak açılıyor');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    if (mobileMenu && mobileMenuOverlay) {
+        mobileMenuOverlay.style.display = 'block';
+        mobileMenu.style.display = 'block';
+        
+        setTimeout(() => {
+            mobileMenu.classList.add('active');
+        }, 10);
+        
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMobileMenuManual() {
+    console.log('Mobil menü manuel olarak kapanıyor');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    if (mobileMenu) {
+        mobileMenu.classList.remove('active');
+        
+        setTimeout(() => {
+            if (mobileMenu && mobileMenuOverlay) {
+                mobileMenu.style.display = 'none';
+                mobileMenuOverlay.style.display = 'none';
+            }
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Scroll işlemi için header stil değişimi
     window.addEventListener('scroll', function() {
@@ -80,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Aktif öğeyi belirle
     function setActiveIndicator() {
         const activeLink = document.querySelector('.nav-link.active');
-        if (activeLink) {
+        if (activeLink && indicator) {
             const activeItem = activeLink.parentElement;
             indicator.style.width = `${activeLink.offsetWidth}px`;
             indicator.style.left = `${activeLink.offsetLeft}px`;
@@ -94,13 +172,74 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hover efektleri
     navLinks.forEach(link => {
         link.addEventListener('mouseenter', function() {
-            indicator.style.width = `${this.offsetWidth}px`;
-            indicator.style.left = `${this.offsetLeft}px`;
-            indicator.style.opacity = '1';
+            if (indicator) {
+                indicator.style.width = `${this.offsetWidth}px`;
+                indicator.style.left = `${this.offsetLeft}px`;
+                indicator.style.opacity = '1';
+            }
         });
         
         link.addEventListener('mouseleave', function() {
             setActiveIndicator();
+        });
+    });
+    
+    // Mobil menü fonksiyonları
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    
+    // Başlangıçta mobil menü gizli olmalı
+    if (mobileMenu && mobileMenuOverlay) {
+        mobileMenu.style.display = 'none';
+        mobileMenuOverlay.style.display = 'none';
+    }
+    
+    // Ekran boyutunu kontrol et ve mobil menü butonunu göster/gizle
+    function checkMobileMenu() {
+        if (window.innerWidth <= 992) {
+            if (mobileMenuButton) {
+                mobileMenuButton.style.display = 'block';
+            }
+        } else {
+            if (mobileMenuButton) {
+                mobileMenuButton.style.display = 'none';
+            }
+        }
+    }
+    
+    // Sayfa yüklendiğinde ve boyutu değiştiğinde kontrol et
+    checkMobileMenu();
+    window.addEventListener('resize', checkMobileMenu);
+    
+    // Event listener'ları ekle
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            openMobileMenuManual();
+        });
+    }
+    
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMobileMenuManual();
+        });
+    }
+    
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMobileMenuManual();
+        });
+    }
+    
+    // Mobil menü içindeki linklere tıklandığında menüyü kapat
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-nav .nav-link');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMobileMenuManual();
         });
     });
 });
